@@ -15,12 +15,11 @@ const Search = () => {
 
   return (
     <KeyboardAvoidingView style={styles.main} 
-    behavior={Platform.OS === "ios" ? "padding" : "height"} 
-    keyboardVerticalOffset ={10}
+    // behavior={Platform.OS === "ios" ? "padding" : "height"} 
     >
       <SafeAreaView style={styles.container}>
         <View style={styles.top}>
-          <TextInput placeholder='Search...' style={styles.input}></TextInput>
+          <TextInput autoFocus placeholder='Search...' style={styles.input}></TextInput>
           <TouchableOpacity style={styles.left}>
             <Image source={require('../images/search.png')} />
           </TouchableOpacity>
@@ -32,19 +31,50 @@ const Search = () => {
           </TouchableOpacity>
         </View>
         <View style={styles.wrap}>
-          <View style={styles.colums}>
-            <ScrollView>
+          <ScrollView>
+            <View style={styles.colums}>
               <Product />
               <Product />
               <Product />
               <Product />
-              <Product />              
-            </ScrollView>
-          </View>     
-           
-          </View>
+              <Product />
+              <Product />            
+              <Product />            
+              <Product />            
+              <Product />            
+              <Product />            
+              <Product />            
+              <Product />            
+              <Product />            
+            </View>     
+          </ScrollView>
+        </View>
+      
+        <View style={styles.bottomNavigate}>
+          <TouchableOpacity style={styles.Icon}>
+            <Image style={styles.Image} source={require('../images/home.png')} />
+            <Text style={styles.textIcon}>Shop</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.Icon} >
+            <Image style={styles.Image} source={require('../images/Search(1).png')} />
+            <Text  style={styles.textCart} >Explore</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.Icon}>
+            <Image style={styles.Image} source={require('../images/card.png')} />
+            <Text style={styles.textIcon}>Cart</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.Icon}>
+            <Image style={styles.Image} source={require('../images/like.png')} />
+            <Text style={styles.textIcon}>Favourite</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.Icon}>
+            <Image style={styles.Image} source={require('../images/user.png')} />
+            <Text style={styles.textIcon}>Account</Text>
+          </TouchableOpacity>
+        </View>
       </SafeAreaView>
     </KeyboardAvoidingView>
   )
 }
+
 export default Search

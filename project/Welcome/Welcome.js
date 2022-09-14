@@ -1,7 +1,7 @@
 import { Text, StyleSheet, View, Button, Image, ImageBackground, TouchableOpacity } from 'react-native'
 import React, { Component } from 'react'
 
-const HomeScreen = ({navigation}) => {
+const Welcome = ({navigation}) => {
     return (
       <View style={styles.container}>
           <ImageBackground style={styles.background} source ={require('../images/onbording.png')} resizeMode="cover">
@@ -24,7 +24,7 @@ const HomeScreen = ({navigation}) => {
     )
 }
 
-export default HomeScreen;
+export default Welcome;
 const styles = StyleSheet.create({
     container:{
         flex: 1

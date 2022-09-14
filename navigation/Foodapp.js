@@ -5,7 +5,9 @@ import Login from '../project/login';
 import Product from '../project/products/product';
 import Register from '../project/register';
 import SignInScreen from '../project/SignIn/SignInScreen';
-import HomeScreen from '../project/Welcome/HomeScreen';
+import Welcome from '../project/Welcome/Welcome';
+import HomeScreen from '../project/HomeScreen/HomeScreen';
+import Search from '../project/search';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,11 +17,13 @@ const MyStack = (props) => {
       <Stack.Navigator screenOptions={{
       headerShown: false
     }}>
-      <Stack.Screen name="HomeScreen" component={HomeScreen} />
+      <Stack.Screen name="Welcome" component={Welcome} />
         <Stack.Screen name="Signin" component={SignInScreen} />
         <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen name="Product" component={Product} />
         <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="Search" component={Search} />
       </Stack.Navigator>
     </NavigationContainer>
   )
