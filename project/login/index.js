@@ -40,7 +40,7 @@ const Login = ({navigation}) => {
           </TouchableOpacity>
           <Text style={styles.fogot}>Fogot password ?</Text>
           <View style={styles.footer}>
-            <TouchableOpacity style={styles.submit}  onPress={() => {navigation.navigate('Product')}}>
+            <TouchableOpacity style={styles.submit}  onPress={() => {navigation.navigate('HomeScreen')}}>
               <Text style={styles.singin}> Log In</Text>
             </TouchableOpacity>
             <Text style={styles.have}>Don’t have an account? <Text style={styles.singup}

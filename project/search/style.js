@@ -5,56 +5,62 @@ const cardWidth = width/2 - 25;
 const styles = StyleSheet.create({
     main: {
         flex: 1,
-        width: "100%",
-        backgroundColor:'#fff',
-        paddingHorizontal:20,
+        backgroundColor: '#fff'
     },
     container:{
+
         flex: 1,
-        width: "100%",
+
     },
     top:{
+
         flex: 1,
         flexDirection:'row',
         alignItems:'center',
-
+        paddingHorizontal:20,
     },
     input:{
+
         position:'relative',
         backgroundColor:'#F2F3F2',
         width: '90%',
         height:45,
-        paddingLeft:34,
+        paddingLeft:40,
         borderRadius:10,
         fontSize:14,
     },
     left:{
+
         position:'absolute',
-        left:10,
+        left:30,
     },
     close:{
+
         position:'absolute',
-        right:45,
+        right:70,
     },
     next:{
+
       paddingLeft:15 ,
     },
-
     wrap:{
-        flex:6,
-        width:'100%',
-    },
 
+        flex:7,
+        width:'100%',
+        paddingHorizontal:20,
+    },
     colums:{
+
+        flex:1,
         width:'100%',
         height:'100%',
-        // flexDirection:'row',
+        flexDirection:'row',
         flexWrap:'wrap',
         alignItem:'flex-end',
         justifyContent:'space-between',
-        // backgroundColor:'#ccc'
     },
     product:{
+
         width:cardWidth,
         borderRadius: 10,
         borderColor: '#ccc',
@@ -64,24 +70,29 @@ const styles = StyleSheet.create({
         elevation:5,
     },
     colum:{
+
         paddingHorizontal:10
     },
     title:{
+
         fontSize:16,
         fontWeight:'bold',
         color:'#181725'
     },
     span:{
+
         fontSize:14,
         color:'#DEDEDE'
     },
     price:{
+
         paddingHorizontal:10,
         paddingVertical:10,
         flexDirection:'row',
         justifyContent:"space-between",
     },
     button:{
+
         width:30,
         height:30,
         backgroundColor:'#53B175',
@@ -90,10 +101,44 @@ const styles = StyleSheet.create({
         justifyContent:'center'
     },
     btn:{
+
         width:15,
         height:15,
     },
-  
-    
+    bottomNavigate:{
+
+        flex:1,
+        alignItems:'center',
+        justifyContent:'center',
+        borderTopLeftRadius:15,
+        borderTopRightRadius:15,
+        borderColor:'#ccc',
+        elevation:15,
+        backgroundColor:'#fff',
+        flexDirection:'row',
+        width:'100%',
+        shadowOpacity: 0.32,
+    },
+    Icon:{
+
+        width:'20%',
+        height:40,
+        alignItems:'center',
+        justifyContent:'center',
+       
+    },
+    textIcon:{
+
+        fontSize:12,
+        paddingTop:4,
+        fontWeight:'600'
+    },
+    textCart:{
+
+        fontSize:12,
+        paddingTop:4,
+        fontWeight:'600',
+        color:'#53B175'
+    }
 })
 export default styles;
