@@ -1,8 +1,5 @@
 import * as React from 'react';
 import { Button, Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 
 function HomeScreen({ navigation }) {
@@ -11,7 +8,7 @@ function HomeScreen({ navigation }) {
       <Text>Home screen</Text>
       <Button
         title="Go to Details"
-        onPress={() => navigation.navigate('Details')}
+        onPress={() => navigation.navigate('Search')}
       />
     </View>
   );

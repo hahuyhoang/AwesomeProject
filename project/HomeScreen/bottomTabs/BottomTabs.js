@@ -1,29 +1,22 @@
 import * as React from 'react';
 import { Button, Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeStackScreen from './HomeStackScreen';
+import HomeScreen from './HomeScreen';
+import Search from './Search/Search';
 import SettingsScreen from './SettingsScreen';
+
 
 
 const Tab = createBottomTabNavigator();
 
-function TabNavigatior(){
+function BottomTab(){
     return(
-            <Tab.Navigator screenOptions={{ headerShown: false }}>
-                <Tab.Screen name="Home" component={HomeStackScreen} />
-                <Tab.Screen name="Settings" component={SettingsScreen} />
-            </Tab.Navigator>
+                <Tab.Navigator>
+                    <Tab.Screen name='Home' component={HomeScreen}/>
+                    <Tab.Screen name='Search' component={Search}/>
+                    <Tab.Screen name='Settings' component={SettingsScreen}/>
+                    
+                </Tab.Navigator>
     )
 }
-const MainBottom = () => { 
-    return(
-        <NavigationContainer>
-            <TabNavigatior>
-
-            </TabNavigatior>
-        </NavigationContainer>
-    )
-}
-export default MainBottom;
+export default BottomTab;
