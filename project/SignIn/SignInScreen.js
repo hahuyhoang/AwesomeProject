@@ -41,14 +41,20 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   },
   imgBackground:{
-    position: 'relative'
+   
+    position: 'relative',
+    // height: '50%'
+  },
+  topBody:{
+    flex: 1,
+    height: '70%'
   },
   absoluteImg:{
     position: 'absolute',
-    top: '3%',
+    top: '9%',
     right: '10%',
     width: 70,
-    height: 50
+    height: 60
   },
   bottomBody:{
     marginHorizontal: 20
@@ -57,7 +63,8 @@ const styles = StyleSheet.create({
     borderBottomColor: '#ccc',
     borderBottomWidth: 1,
     position:'relative',
-    paddingLeft: 50
+    paddingLeft: 50,
+    fontFamily: 'Gilroy-Light'
   },
   flagIcon:{
     position: 'absolute',
@@ -68,6 +75,7 @@ const styles = StyleSheet.create({
   },
   text:{
     fontSize: 23,
+    fontFamily: 'Gilroy-Light'
   },
   socialmedia:{
     justifyContent: 'center',
@@ -77,7 +85,8 @@ const styles = StyleSheet.create({
   },
   textConnect:{
     color: '#828282',
-    fontSize: 12
+    fontSize: 12,
+    fontFamily: 'Gilroy-Light'
   },
   butomSocial:{
     justifyContent: 'center',

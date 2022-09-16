@@ -17,7 +17,7 @@ const Product = () => {
       </View>
       <View style={styles.price}>
         <View style={styles.cardPrice}>
-          <Text style={{fontWeight:'bold'}}>$1.99</Text>
+          <Text style={styles.numBerprice}>$1.99</Text>
         </View>
         <TouchableOpacity style={styles.button}>
           <Image style={styles.btn} source={require('../images/add.png')} />
@@ -26,4 +26,4 @@ const Product = () => {
     </View>
   )
 }
-export default Product
+export default Product;

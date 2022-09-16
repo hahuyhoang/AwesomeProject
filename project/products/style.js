@@ -34,13 +34,15 @@ const styles = StyleSheet.create({
 
         fontSize:16,
         fontWeight:'bold',
-        color:'#181725'
+        color:'#181725',
+        fontFamily: 'Gilroy-Light'
     },
     span:{
 
         paddingTop:10,
         fontSize:14,
-        color:'#7C7C7C'
+        color:'#7C7C7C',
+        fontFamily: 'Gilroy-Light'
     },
     price:{
 
@@ -49,6 +51,10 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         justifyContent:"space-between",
         alignItem:'center'
+    },
+    numBerprice:{
+        fontFamily: 'Gilroy-Light',
+        fontSize: 16
     },
     button:{
 

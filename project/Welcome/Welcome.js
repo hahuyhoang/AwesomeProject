@@ -1,10 +1,23 @@
 import { Text, StyleSheet, View, Button, Image, ImageBackground, TouchableOpacity } from 'react-native'
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react';
+import { useFonts } from 'expo-font';
+import AppLoading from 'expo-app-loading';
+
+
+
 
 const Welcome = ({navigation}) => {
+  let [fontsLoaded] = useFonts({
+    'Gilroy-Light': require('../../assets/font/Gilroy-SemiBold.ttf')
+  });
+
+  if(!fontsLoaded) {
+    return <AppLoading />
+  }
+
     return (
       <View style={styles.container}>
-          <ImageBackground style={styles.background} source ={require('../images/onbording.png')} resizeMode="cover">
+          <ImageBackground style={styles.background} source ={require('../images/back.jpg')} resizeMode="cover">
 
               <View style={{flex:2}}></View>
               <Image style={styles.logo} source={require('../images/logo.png')} />
@@ -32,11 +45,11 @@ const styles = StyleSheet.create({
     background:{
       flex: 1, 
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
 
     },
     logo:{
-      width: 40,
+      width: 30,
       height: 45,
       
     },
@@ -51,17 +64,21 @@ const styles = StyleSheet.create({
     firstTitle:{
       color: 'white',
       fontSize: 40,
+      fontFamily: 'Gilroy-Light',
+      
       
     },
     secondTitle:{
         color: 'white',
         justifyContent: 'center',
-        fontSize: 30
+        fontSize: 40,
+        fontFamily: 'Gilroy-Light',
     },
     title:{
-      color: 'white',
-      fontSize: 10,
-      fontWeight: 'bold',
+      color: '#c6bdb7',
+      fontSize: 14,
+      fontFamily: 'Gilroy-Light'
+      
       
     },
     getstarted:{
@@ -71,12 +88,14 @@ const styles = StyleSheet.create({
       width: 300,
       height: 60,
       borderRadius: 20,
-      marginVertical: 30
+      marginVertical: 30,
+      
       
       
     },
     text:{
     color: '#fff',
-    fontSize: 18
+    fontSize: 18,
+    fontFamily: 'Gilroy-Light'
     }
 })

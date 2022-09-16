@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
         paddingLeft:40,
         borderRadius:10,
         fontSize:14,
+        fontFamily: 'Gilroy-Light'
     },
     left:{
 

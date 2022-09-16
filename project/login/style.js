@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems: 'center',
         fontWeight:"bold",
+        fontFamily: 'Gilroy-Light'
     },
     input : {
         position :"relative",
@@ -38,15 +39,18 @@ const styles = StyleSheet.create({
         paddingTop: 10,
         color : "#7C7C7C",
         paddingBottom:20,
+        fontFamily: 'Gilroy-Light'
     },
     title:{
         fontSize: 12,
         color : "#7C7C7C",
+        fontFamily: 'Gilroy-Light'
     },
     fogot:{
         fontSize: 12,
         paddingTop:10,
-        marginLeft:"auto"
+        marginLeft:"auto",
+        fontFamily: 'Gilroy-Light'
     },
     singup:{
         fontSize: 12,
@@ -56,6 +60,7 @@ const styles = StyleSheet.create({
     have :{
         fontSize: 12,
         paddingTop:10,
+        fontFamily: 'Gilroy-Light'
     },
     footer :{
         marginTop: 20,
@@ -78,8 +83,9 @@ const styles = StyleSheet.create({
     },
     singin:{
         color:"#fff",
-        fontSize: 16,
-        fontWeight:"bold"
+        fontSize: 18,
+        fontWeight:"bold",
+        fontFamily: 'Gilroy-Light'
     },
     eye:{
         position :'absolute',

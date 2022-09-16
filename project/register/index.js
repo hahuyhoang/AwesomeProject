@@ -47,7 +47,7 @@ const Register = () => {
             <Text> and </Text><Text style={styles.singup}>Privacy Policy.</Text></Text>
             <View style={styles.footer}>
               <TouchableOpacity style={styles.submit}>
-               <Text style={styles.singin}> Sing In</Text>
+               <Text style={styles.singin}> Sign In</Text>
               </TouchableOpacity>
               <Text style={styles.have}>Already have an account? <Text style={styles.singup}>Signup</Text></Text>
             </View>

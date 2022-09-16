@@ -8,6 +8,7 @@ import SignInScreen from '../project/SignIn/SignInScreen';
 import Welcome from '../project/Welcome/Welcome';
 import BottomTab from '../project/HomeScreen/bottomTabs/BottomTabs';
 
+
 const Stack = createNativeStackNavigator();
 
 const MyStack = (props) => {
@@ -22,7 +23,7 @@ const MyStack = (props) => {
         <Stack.Screen name="HomeScreen" component={BottomTab} />
         <Stack.Screen name="Product" component={Product} />
         <Stack.Screen name="Register" component={Register} />
-        {/* <Stack.Screen name="Search" component={Search} /> */}
+
       </Stack.Navigator>
     </NavigationContainer>
   )
