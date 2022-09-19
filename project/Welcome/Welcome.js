@@ -49,8 +49,8 @@ const styles = StyleSheet.create({
 
     },
     logo:{
-      width: 30,
-      height: 45,
+      width: 41,
+      height: 48,
       
     },
     body:{

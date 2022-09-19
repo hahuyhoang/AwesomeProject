@@ -1,20 +1,27 @@
-import { Text, StyleSheet, View, Image, TextInput, TouchableOpacity } from 'react-native'
+import { Text, StyleSheet, View, Image, TextInput, TouchableOpacity, KeyboardAvoidingView } from 'react-native'
 import React, { Component } from 'react'
 
 const SignInScreen = ({navigation}) =>{
     return(
+      <KeyboardAvoidingView style={styles.main} 
+    behavior={Platform.OS === "ios" ? "padding" : "height"} 
+    keyboardVerticalOffset ={10}
+    >
         <View style={styles.container}>
-        <View style={styles.topBody}>
-          <Image style={styles.imgBackground} source={require('../images/image-sign-In.png')}/>
-          <Image style={styles.absoluteImg} source={require('../images/icon-SignIn.png')} />
-        </View>
-        <View style={styles.bottomBody}>
-          <Text style={styles.text}>Get your groceries</Text>
-          <Text style={styles.text}>with nectar</Text>
-        <View style={styles.phoneNumber}>
-          <TextInput style={styles.textInput} placeholder='vui long nhap so dien thoai'/>
-            <Image style={styles.flagIcon} source={require('../images/flag-icon.png')}/>
-        </View>
+          <View style={styles.topBody}>
+            <Image style={styles.imgBackground} source={require('../images/image-sign-In.png')}/>
+            <Image style={styles.absoluteImg} source={require('../images/icon-SignIn.png')} />
+          </View>
+
+          <View style={styles.bottomBody}>
+            <Text style={styles.text}>Get your groceries</Text>
+            <Text style={styles.text}>with nectar</Text>
+          <View style={styles.phoneNumber}>
+            <TextInput style={styles.textInput} placeholder='vui long nhap so dien thoai'/>
+              <Image style={styles.flagIcon} source={require('../images/flag-icon.png')}/>
+          </View>
+
+      
         <View style={styles.socialmedia}>
           <Text style={styles.textConnect}>Or connect with social media. <Text style={{color:'#53B175'}} onPress={() => {navigation.navigate('Login')}} >Login?</Text></Text>
         </View>
@@ -30,12 +37,17 @@ const SignInScreen = ({navigation}) =>{
         </View>
         </View>
       </View>
+      </KeyboardAvoidingView>
     )
 }
 export default SignInScreen;
 
 
 const styles = StyleSheet.create({
+  main:{
+    flex: 1,
+    width: '100%'
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff'
@@ -64,7 +76,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     position:'relative',
     paddingLeft: 50,
-    fontFamily: 'Gilroy-Light'
+    fontFamily: 'Gilroy-Light',
+    paddingBottom: 5
   },
   flagIcon:{
     position: 'absolute',

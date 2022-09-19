@@ -29,7 +29,8 @@ function BottomTab(){
                     <Tab.Screen name='MyCart' component={MyCart} />
                     <Tab.Screen name='Favourite' component={Favourite}/>
                     <Tab.Screen name='Account' component={Account}/>
-                    <Tab.Screen name='SettingsScreen' component={ProductDetail} />
+                    <Tab.Screen name='ProductDetail' component={ProductDetail} />
+                    <Tab.Screen name='SettingsScreen' component={SettingsScreen} />
                 </Tab.Navigator>
     )
 }

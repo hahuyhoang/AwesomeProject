@@ -44,12 +44,12 @@ const PictureList = () => {
   return (
     <SafeAreaView>
         <View>
-            <View style={{height: 100}}>
+            <View style={{width: screenWidth ,height: 130}}>
                 <ScrollView
                 horizontal
                 pagingEnabled
                 contentContainerStyle={{
-                    width: screenWidth * imgList.length, height: 140
+                    width: screenWidth * imgList.length, height: 130
                 }}
                 // ref={stepCarousel}
                 >

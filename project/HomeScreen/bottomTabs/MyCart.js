@@ -10,7 +10,7 @@ function MyCart({ navigation }) {
      <SafeAreaView style={{ flex: 1,backgroundColor:'#fff' }}>
      <StatusBar
         animated={true}
-        backgroundColor="#61dafb"
+        // backgroundColor="#61dafb"
        />
       <View style={styles.CartTop}>
         <Text style={styles.CartText}>My Cart</Text>                   
