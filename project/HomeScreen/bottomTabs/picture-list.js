@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, SafeAreaView, ScrollView, Image,Dimensions } from 'react-native'
 import React, {useEffect, useState, useRef} from 'react'
 
-const {width: screenWidth} = Dimensions.get('screen')
+const {width: screenWidth} = Dimensions.get('window')
 
 
 const PictureList = () => {
@@ -11,13 +11,13 @@ const PictureList = () => {
     useEffect(() => {
         const data = [
             {
-                image: <Image key={'0'} source={require('../../images/banner.png')} resizeMode='stretch' style={{width: 350, height: '70%'}}/>
+                image: <Image key={'0'} source={require('../../images/banner.png')} style={styles.ImgLists}/>
             },
             {
-                image: <Image key={'1'} source={require('../../images/banner.png')} resizeMode='stretch' style={{width: 350, height: '70%'}}/>
+                image: <Image key={'1'} source={require('../../images/banner.png')} style={styles.ImgLists1}/>
             },
             {
-                image: <Image key={'2'} source={require('../../images/banner.png')} resizeMode='stretch' style={{width: 350, height: '70%'}}/>
+                image: <Image key={'2'} source={require('../../images/banner.png')} style={styles.ImgLists2}/>
             },
 
         ];
@@ -44,12 +44,12 @@ const PictureList = () => {
   return (
     <SafeAreaView>
         <View>
-            <View style={{width: screenWidth ,height: 130}}>
+            <View style={{width: screenWidth ,height: 150}}>
                 <ScrollView
                 horizontal
                 pagingEnabled
                 contentContainerStyle={{
-                    width: screenWidth * imgList.length, height: 130
+                    width: screenWidth * imgList.length, height: 150
                 }}
                 // ref={stepCarousel}
                 >
@@ -63,4 +63,20 @@ const PictureList = () => {
 
 export default PictureList;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    ImgLists: {
+        width: screenWidth ,
+        height: 130,
+        resizeMode:'cover'
+        
+    },ImgLists1:{
+        width: screenWidth,
+        height: 130,
+        resizeMode:'cover'
+    },
+    ImgLists2:{
+        width: screenWidth ,
+        height: 130,
+        resizeMode:'cover'
+    }
+})

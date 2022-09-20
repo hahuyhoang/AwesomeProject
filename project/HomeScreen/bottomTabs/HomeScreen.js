@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Button, Text, View, Image, StyleSheet, TextInput, ScrollView, Animated, TouchableOpacity } from 'react-native';
+import { Button, Text, View, Image, StyleSheet, TextInput, ScrollView, Animated, TouchableOpacity, Dimensions } from 'react-native';
 import { Icon } from 'react-native-vector-icons/FontAwesome';
 import Product from '../../products/product';
-
 import PictureList from './picture-list';
 
+const {WIDTH, HEIGHT} = Dimensions.get('window')
 
 function HomeScreen({ navigation }) {
 
@@ -33,7 +33,7 @@ function HomeScreen({ navigation }) {
           </View>
           
             <View style={styles.slider}>
-            <PictureList />
+            <PictureList  style={styles.sliders}/>
             </View>
           <View style={styles.listProducts}>
             <View style={styles.offer}>
@@ -222,7 +222,9 @@ const styles = StyleSheet.create({
     marginTop: 20
   },
   slider:{
-    marginTop: 20
+    marginTop: 20,
+    width: WIDTH,
+    height: HEIGHT
   },
   offer:{
     flexDirection: 'row',

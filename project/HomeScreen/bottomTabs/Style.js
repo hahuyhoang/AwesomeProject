@@ -181,7 +181,7 @@ BtnOut:{
     justifyContent:'center',
     borderRadius:20,
     backgroundColor:'#F2F3F2',
-    marginBottom:20,
+    marginTop:20,
 
 },
 BtnText:{
@@ -192,7 +192,7 @@ BtnText:{
 btnIcon:{
     position:'absolute',
     left:'10%',
-    top:20,
+    top: 40,
     zIndex:1,
 }
 

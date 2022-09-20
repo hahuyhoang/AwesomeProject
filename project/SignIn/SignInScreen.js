@@ -1,18 +1,20 @@
-import { Text, StyleSheet, View, Image, TextInput, TouchableOpacity, KeyboardAvoidingView } from 'react-native'
+import { Text, StyleSheet, View, Image, TextInput, TouchableOpacity, KeyboardAvoidingView, Dimensions } from 'react-native'
 import React, { Component } from 'react'
+
+const {HEIGHT,WIDTH} = Dimensions.get('window')
 
 const SignInScreen = ({navigation}) =>{
     return(
-      <KeyboardAvoidingView style={styles.main} 
-    behavior={Platform.OS === "ios" ? "padding" : "height"} 
-    keyboardVerticalOffset ={10}
-    >
-        <View style={styles.container}>
+      <View style={styles.container}>
           <View style={styles.topBody}>
             <Image style={styles.imgBackground} source={require('../images/image-sign-In.png')}/>
             <Image style={styles.absoluteImg} source={require('../images/icon-SignIn.png')} />
           </View>
 
+          <KeyboardAvoidingView style={styles.main} 
+        behavior={Platform.OS === "ios" ? "padding" : "height"} 
+        keyboardVerticalOffset ={10}
+        >
           <View style={styles.bottomBody}>
             <Text style={styles.text}>Get your groceries</Text>
             <Text style={styles.text}>with nectar</Text>
@@ -36,8 +38,8 @@ const SignInScreen = ({navigation}) =>{
           </TouchableOpacity>
         </View>
         </View>
-      </View>
       </KeyboardAvoidingView>
+      </View>
     )
 }
 export default SignInScreen;
@@ -53,20 +55,23 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   },
   imgBackground:{
-   
+    flex: 2,
+    resizeMode: 'cover',
     position: 'relative',
-    // height: '50%'
+    height: HEIGHT,
+    width: WIDTH
   },
   topBody:{
     flex: 1,
-    height: '70%'
+    height: HEIGHT ,
+    width: WIDTH
   },
   absoluteImg:{
     position: 'absolute',
-    top: '9%',
-    right: '10%',
-    width: 70,
-    height: 60
+    top: '10%',
+    right: '15%',
+    width: '15%',
+    height: '13%'
   },
   bottomBody:{
     marginHorizontal: 20
