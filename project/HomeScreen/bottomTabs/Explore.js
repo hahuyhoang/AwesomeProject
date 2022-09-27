@@ -1,20 +1,21 @@
 import * as React from 'react';
 import { Button, Image, SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
  import {StyleSheet} from 'react-native'
+ import { EvilIcons } from '@expo/vector-icons';
 
-
-function SettingsScreen({ navigation }) {
+function Explore({ navigation }) {
   return (
-    <SafeAreaView style={{backgroundColor: '#fff'}}>
+    <SafeAreaView style={{backgroundColor: '#fff', flex: 1}}>
     <View style={styles.main}>
       <View style={styles.Header}>
         <Text style={styles.TextHeader}>Find Products </Text>
       </View>
       <View style={styles.Body}>
         <TextInput  placeholder='Search Store' style={styles.Search} />
-        <Image style={styles.ImgSearch} source={require('../../images/search.png')} />
+        <EvilIcons style={{position: 'absolute',top: '40%', left: '2%'}} name="search" size={24} color="black" />
       </View>
-      <ScrollView>
+      <ScrollView
+      >
         <View style={styles.ListItems}>
           <TouchableOpacity style={styles.Items1}>
             <View >
@@ -96,7 +97,7 @@ function SettingsScreen({ navigation }) {
     </SafeAreaView>
   );
 }
-export default SettingsScreen;
+export default Explore;
 const styles = StyleSheet.create({
   Header:{
     alignItems:'center',

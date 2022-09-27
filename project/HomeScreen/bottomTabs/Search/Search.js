@@ -11,20 +11,22 @@ import {
 import React ,{ useState,} from 'react'
 import Product from '../../../products/product'
 import styles from './style'
+import { EvilIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 const Search = () => {
 
   return (
     <KeyboardAvoidingView style={styles.main} 
-    // behavior={Platform.OS === "ios" ? "padding" : "height"} 
+    behavior={Platform.OS === "ios" ? "padding" : "height"} 
     >
       <SafeAreaView style={styles.container}>
         <View style={styles.top}>
           <TextInput autoFocus placeholder='Search...' style={styles.input}></TextInput>
           <TouchableOpacity style={styles.left}>
-            <Image source={require('../../../images/search.png')} />
+          <EvilIcons name="search" size={24} color="black" />
           </TouchableOpacity>
           <TouchableOpacity style={styles.close}>
-            <Image source={require('../../../images/close.png')} />
+          <AntDesign name="closecircle" size={20} color="#CCC" />
           </TouchableOpacity>
           <TouchableOpacity style={styles.next}>
             <Image source={require('../../../images/next.png')} />

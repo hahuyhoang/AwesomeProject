@@ -2,6 +2,7 @@ import * as React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Button,Image, SafeAreaView,Text,ScrollView, View,TouchableOpacity} from 'react-native';
 import styles from'./Style'
+import { Entypo } from '@expo/vector-icons';
  
 function ProductFavoruite({ navigation }) {
   return (
@@ -20,7 +21,7 @@ function ProductFavoruite({ navigation }) {
               <Text style={{fontWeight:'bold', fontFamily: 'Gilroy-Light'}}>$1.99</Text>
             </View>
             <TouchableOpacity style={styles.ProductNext}>
-              <Image source={require('../../images/Next_1.png')} />
+            <Entypo name="chevron-right" size={24} color="black" />
               
             </TouchableOpacity>
           </View>

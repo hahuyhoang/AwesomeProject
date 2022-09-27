@@ -20,7 +20,8 @@ const SignInScreen = ({navigation}) =>{
             <Text style={styles.text}>with nectar</Text>
           <View style={styles.phoneNumber}>
             <TextInput style={styles.textInput} placeholder='vui long nhap so dien thoai'/>
-              <Image style={styles.flagIcon} source={require('../images/flag-icon.png')}/>
+              <Image style={styles.flagIcon} source={require('../images/flag-icon.png')}></Image>
+              <Text style={{position: 'absolute', bottom: '28%',left: '7%', fontFamily: 'Gilroy-Light'}}>+880</Text>
           </View>
 
       
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
     borderBottomColor: '#ccc',
     borderBottomWidth: 1,
     position:'relative',
-    paddingLeft: 50,
+    paddingLeft: 80,
     fontFamily: 'Gilroy-Light',
     paddingBottom: 5
   },

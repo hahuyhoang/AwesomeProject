@@ -5,14 +5,19 @@ import {
   Image,
   ScrollView,
 } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 import React ,{ useState} from 'react'
 import styles from './style'
 const Product = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.product}>
       <Image style={styles.img} source={require('../images/Egg.png')} />
-      <View style={styles.colum}>
-        <Text style={styles.title}>Egg Chicken Red</Text>
+      <View style={styles.colum} >
+        <TouchableOpacity onPress={() => {navigation.navigate('ProductDetail')}}>
+            <Text style={styles.title}>Egg Chicken Red</Text>
+
+        </TouchableOpacity>
         <Text style={styles.span}>4pcs,price</Text>
       </View>
       <View style={styles.price}>

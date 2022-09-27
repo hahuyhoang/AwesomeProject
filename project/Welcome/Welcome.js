@@ -1,9 +1,9 @@
-import { Text, StyleSheet, View, Button, Image, ImageBackground, TouchableOpacity } from 'react-native'
+import { Text, StyleSheet, View, Button, Image, ImageBackground, TouchableOpacity, Dimensions } from 'react-native'
 import React, { Component, useState } from 'react';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 
-
+const {WIDTH, HEIGHT} = Dimensions.get('window')
 
 
 const Welcome = ({navigation}) => {
@@ -40,10 +40,15 @@ const Welcome = ({navigation}) => {
 export default Welcome;
 const styles = StyleSheet.create({
     container:{
-        flex: 1
+        flex: 1,
+        width: WIDTH,
+        height: HEIGHT,
+
     },
     background:{
-      flex: 1, 
+      width: '100%',
+      height: '100%',
+      flex: 2, 
       justifyContent: 'center',
       alignItems: 'center',
 

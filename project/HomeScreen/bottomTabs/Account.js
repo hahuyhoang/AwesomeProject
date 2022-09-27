@@ -2,6 +2,12 @@ import * as React from 'react';
 import { Button,Image, SafeAreaView,Text,ScrollView, View,TouchableOpacity} from 'react-native';
 import styles from'./Style'
 import ProductCart from './ProductCart';
+import { Entypo } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import { SimpleLineIcons } from '@expo/vector-icons';
+import { Octicons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
 function Account({ navigation }) {
   return (
@@ -18,93 +24,96 @@ function Account({ navigation }) {
           <Text style={styles.GmailUser}>Imshuvo97@gmail.com</Text>
         </View>
       </View>
-      <ScrollView>
+      <ScrollView 
+      showsVerticalScrollIndicator={false}
+      showsHorizontalScrollIndicator={false}
+      >
       <View style={styles.MainUser}>
         <TouchableOpacity style={styles.InfoUser}>
           <View style={styles.ListInfo}>
-            <Image  source={require('../../images/icon_1.png')} />
+          <Feather name="shopping-bag" size={24} color="black" />
             <Text style={styles.TextInfo}>Orders</Text>
           </View>
           <View style={styles.User}>
             <TouchableOpacity style={styles.UserList}>
-              <Image source={require('../../images/Next_1.png')} />
+              <Entypo name="chevron-right" size={24} color="black" /> 
             </TouchableOpacity>
           </View>
         </TouchableOpacity>
         <TouchableOpacity style={styles.InfoUser}>
           <View style={styles.ListInfo}>
-            <Image  source={require('../../images/icon_2.png')} />
+          <AntDesign name="idcard" size={24} color="black" />
             <Text style={styles.TextInfo}>My Details</Text>
           </View>
           <View style={styles.User}>
             <TouchableOpacity style={styles.UserList}>
-              <Image source={require('../../images/Next_1.png')} />
+              <Entypo name="chevron-right" size={24} color="black" /> 
             </TouchableOpacity>
           </View>
         </TouchableOpacity>
         <TouchableOpacity style={styles.InfoUser}>
           <View style={styles.ListInfo}>
-            <Image  source={require('../../images/icon_3.png')} />
+          <SimpleLineIcons name="location-pin" size={24} color="black" />
             <Text style={styles.TextInfo}>Delivery</Text>
           </View>
           <View style={styles.User}>
             <TouchableOpacity style={styles.UserList}>
-              <Image source={require('../../images/Next_1.png')} />
+              <Entypo name="chevron-right" size={24} color="black" /> 
             </TouchableOpacity>
           </View>
         </TouchableOpacity>
         <TouchableOpacity style={styles.InfoUser}>
           <View style={styles.ListInfo}>
-            <Image  source={require('../../images/icon_4.png')} />
+          <Octicons name="credit-card" size={24} color="black" />
             <Text style={styles.TextInfo}>Paymant Methods</Text>
           </View>
           <View style={styles.User}>
             <TouchableOpacity style={styles.UserList}>
-              <Image source={require('../../images/Next_1.png')} />
+              <Entypo name="chevron-right" size={24} color="black" /> 
             </TouchableOpacity>
           </View>
         </TouchableOpacity>
         <TouchableOpacity style={styles.InfoUser}>
           <View style={styles.ListInfo}>
-            <Image  source={require('../../images/icon_5.png')} />
+            <Entypo name="ticket" size={24} color="black" />
             <Text style={styles.TextInfo}>Promo Cord</Text>
           </View>
           <View style={styles.User}>
             <TouchableOpacity style={styles.UserList}>
-              <Image source={require('../../images/Next_1.png')} />
+              <Entypo name="chevron-right" size={24} color="black" /> 
             </TouchableOpacity>
           </View>
         </TouchableOpacity>
         <TouchableOpacity style={styles.InfoUser}>
           <View style={styles.ListInfo}>
-            <Image  source={require('../../images/icon_6.png')} />
+          <Ionicons name="notifications-outline" size={24} color="black" />
             <Text style={styles.TextInfo}>Notifecations</Text>
           </View>
           <View style={styles.User}>
             <TouchableOpacity style={styles.UserList}>
-              <Image source={require('../../images/Next_1.png')} />
+              <Entypo name="chevron-right" size={24} color="black" /> 
             </TouchableOpacity>
           </View>
         </TouchableOpacity>
         <TouchableOpacity style={styles.InfoUser}>
           <View style={styles.ListInfo}>
-            <Image  source={require('../../images/icon_7.png')} />
+            <Ionicons name="ios-help-circle-outline" size={24} color="black" />
             <Text style={styles.TextInfo}>Help</Text>
           </View>
           <View style={styles.User}>
             <TouchableOpacity style={styles.UserList}>
-              <Image source={require('../../images/Next_1.png')} />
+              <Entypo name="chevron-right" size={24} color="black" /> 
             </TouchableOpacity>
           </View>
         </TouchableOpacity>
         <TouchableOpacity style={styles.InfoUser}>
           <View style={styles.ListInfo}>
-            <Image  source={require('../../images/icon_8.png')} />
+            <AntDesign name="exclamationcircleo" size={20} color="black" />
             <Text style={styles.TextInfo}>About</Text>
           </View>
           <View style={styles.User}>
             <TouchableOpacity style={styles.UserList}>
-              <Image source={require('../../images/Next_1.png')} />
+              <Entypo name="chevron-right" size={24} color="black" /> 
             </TouchableOpacity>
           </View>
         </TouchableOpacity>

@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Button,Image, SafeAreaView,Text,ScrollView, View,TouchableOpacity} from 'react-native';
 import styles from'./Style'
+import { Ionicons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 function ProductCart({ navigation }) {
   return (
@@ -14,19 +16,19 @@ function ProductCart({ navigation }) {
             <Text style={styles.ProductText}>1kg , Price</Text>
             <View style={styles.Productnumber}>
               <TouchableOpacity style={styles.productAdd}>
-                <Image source={require('../../images/delete.png')} />
+                <AntDesign name="minus" size={24} color="black" />
               </TouchableOpacity>
               <View style={styles.Number}>
                 <Text style={{fontWeight:'bold'}} >1</Text>
               </View>
               <TouchableOpacity style={styles.productAdd}>
-                <Image source={require('../../images/adds.png')} />
+              <AntDesign name="plus" size={24} color="black" />
               </TouchableOpacity>
             </View>
           </View>
           <View style={styles.ProductPrice}>
             <TouchableOpacity style={styles.productDelete}>
-              <Image source={require('../../images/Clear.png')} />
+              <AntDesign name="close" size={24} color="black" />
             </TouchableOpacity>
             <View style={styles.PriceName}>
               <Text style={{fontWeight:'bold'}}>$1.99</Text>

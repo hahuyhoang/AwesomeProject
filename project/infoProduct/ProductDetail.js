@@ -1,6 +1,12 @@
 
 import { StyleSheet, Text, View, Dimensions, SafeAreaView, ScrollView, Image, TouchableOpacity } from 'react-native'
 import React ,{ useEffect, useState, useRef } from 'react'
+import Rating from '../HomeScreen/Rating';
+import { EvilIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+
 
 const {width: screenWidth} = Dimensions.get('screen')
 
@@ -9,7 +15,7 @@ const {width: screenWidth} = Dimensions.get('screen')
 
     
 
-export default function ProductDetail() {
+export default function ProductDetail({navigation}) {
     const [imgList, setImgList] = useState([]);
     const stepCarousel = useRef({});
 
@@ -32,7 +38,7 @@ export default function ProductDetail() {
   return (
     <SafeAreaView style={{backgroundColor: '#fff'}}>
         <View>
-            <View style={{marginTop: 25, alignItems: 'center'}}>
+            <View style={{marginTop: 25, alignItems: 'center', width: screenWidth,}}>
                 <ScrollView
                 horizontal
                 pagingEnabled
@@ -44,6 +50,12 @@ export default function ProductDetail() {
                     {imgList.map( e => e.image)}
                 </ScrollView>
                 </View>
+                <View style={{position: 'absolute', right: 0}}>
+                <Ionicons name="ios-share-outline" size={24} color="black" />
+                </View>
+                <TouchableOpacity style={{position: 'absolute'}} onPress={() => {navigation.navigate('HomeScreen')}}>
+                <Ionicons name="chevron-back" size={24} color="black" />
+                </TouchableOpacity>
         </View>
         <View style={styles.container}>
             <View style={styles.topTitle}>
@@ -52,16 +64,16 @@ export default function ProductDetail() {
                 <Text style={styles.miniText}>1kg, Price</Text>
                 </View>
                 <View>
-                    <Image style={styles.rightIcon} source={require('../images/head.png')} />
+                <EvilIcons name="heart" size={24} color="black" style={styles.rightIcon}  /> 
                 </View>
             </View>
             <View style={styles.TopBody} >
                 <View style={styles.LeftItem}>
-                    <Image style={styles.Icon} source={require('../images/dautru.png')} />
+                    <AntDesign name="minus" size={24} color="black" />
                     <View style={styles.number}>
                     <Text style={styles.numbers} > 1</Text>
                     </View>
-                    <Image style={styles.Icon} source={require('../images/daucong.png')} />
+                    <AntDesign name="plus" size={24} color="black" />
                 </View>
                 <View>
                     <Text style={styles.Price} >$4.99</Text>
@@ -73,7 +85,7 @@ export default function ProductDetail() {
                         <Text style={styles.TitleTop}>Product Detail</Text>
                     </View>
                     <View>
-                        <Image source={require('../images/down.png')} /> 
+                        <FontAwesome name="angle-down" size={24} color="black" />
                     </View>
                 </View>
                     <View style={{marginTop: 20,marginBottom: 20}}>
@@ -92,10 +104,10 @@ export default function ProductDetail() {
                 </View>
                 <View style={styles.Review}>
                     <View>
-                        <Text style={styles.TextNutri}>Nutritions</Text>
+                        <Text style={styles.TextNutri}>Review</Text>
                     </View>
                     <View style={styles.startReview}>
-                        <Image source={require('../images/Review.png')} />
+                        <Rating />
                     </View>
                 </View>
             </View>
@@ -122,11 +134,11 @@ const styles = StyleSheet.create({
         
     },
     LeftTitle:{
-        width: '95%'
+        width: '97%'
     },
     rightIcon:{
-        width: 19,
-        height: 16
+        width: 23,
+        height: 17
     },
     bigText:{
         fontFamily: 'Gilroy-Light',

@@ -1,11 +1,17 @@
 import { View, Text,KeyboardAvoidingView ,TouchableOpacity,TextInput,Image,} from 'react-native'
-import React ,{ useState} from 'react'
-
+import React ,{ useContext, useState} from 'react'
+import { Entypo } from '@expo/vector-icons';
 import styles from '../login/style'
+import { AuthContext } from '../context/AuthContext';
 
 const Login = ({navigation}) => {
   
   const [getPasswordVisible,setPasswordVisible ] = useState(false)  
+  const [email, setEmail] = useState(null)
+  const [password, setPassword] = useState(null)
+  const val = useContext(AuthContext)
+
+
 
   return (
     <KeyboardAvoidingView style={styles.main} 
@@ -18,24 +24,33 @@ const Login = ({navigation}) => {
       <View style={styles.center}>
         <Text style={styles.text}>Login</Text>
         <Text style={styles.heading}>Enter your emails and password</Text>
+        
         <View style={styles.login}>
           <Text style={styles.title}>Email</Text>
-          <TextInput placeholder="admin@123" style={styles.input}></TextInput>
+          <TextInput
+            placeholder="admin@123"
+            style={styles.input}
+            value = {email}
+            onChangeText = {text => setEmail(text)}
+              ></TextInput>
         </View>
         <View style={styles.login}>
           <Text style={styles.title}>Password</Text>
           <TextInput placeholder="12345" autoCapitalize='none' style={styles.input} 
-          secureTextEntry={getPasswordVisible ? false : true}> 
+          secureTextEntry={getPasswordVisible ? false : true}
+          value ={password}
+          onChangeText= {text => setPassword(text)}
+          > 
           </TextInput>
-          <TouchableOpacity
+          <TouchableOpacity style={{position: 'absolute', right: 0,top: '20%'}}
             onPress={() =>{
             setPasswordVisible(!getPasswordVisible)
            }}>
           {
             getPasswordVisible?
-            <Image style={styles.eye} source={require('../images/Eye.png')} />
+            <Entypo name="eye" size={20} color="black" />
             :
-            <Image style={styles.eye} source={require('../images/eyes.png')} />
+            <Entypo name="eye-with-line" size={20} color="black" />
           }
           </TouchableOpacity>
           <Text style={styles.fogot}>Fogot password ?</Text>

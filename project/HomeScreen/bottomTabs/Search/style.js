@@ -1,7 +1,7 @@
 import { StyleSheet ,Dimensions} from 'react-native'
 import { Colors ,} from 'react-native/Libraries/NewAppScreen';
 const {width} = Dimensions.get("screen");
-const cardWidth = width/2 - 25;
+// const cardWidth = width/2 - 25;
 const styles = StyleSheet.create({
     main: {
         flex: 1,
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     close:{
 
         position:'absolute',
-        right:70,
+        right:80,
     },
     next:{
 
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     },
     product:{
 
-        width:cardWidth,
+        // width:cardWidth,
         borderRadius: 10,
         borderColor: '#ccc',
         borderWidth: 1,

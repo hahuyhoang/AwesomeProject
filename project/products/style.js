@@ -1,10 +1,10 @@
 import { StyleSheet ,Dimensions, ImageBackgroundBase} from 'react-native'
 const {width} = Dimensions.get("screen");
-const cardWidth = width/2 - 25;
+// const cardWidth = width/2;
 const styles = StyleSheet.create({
     wrap:{
-        flex:6,
-        width:'100%',
+        flex: 1,
+        width: width,
     },
     colums:{
 
@@ -18,17 +18,17 @@ const styles = StyleSheet.create({
     },
     product:{
 
-        width:cardWidth,
+        // width: '100%',
         borderRadius: 10,
         borderColor: '#ccc',
         borderWidth: 1,
         backgroundColor:'#fff',
         marginBottom: 10,
-        elevation:5,
+        elevation: 5,
     },
     colum:{
 
-        paddingHorizontal:10,
+        paddingHorizontal: 18,
     },
     title:{
 

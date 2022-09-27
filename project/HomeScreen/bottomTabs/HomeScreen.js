@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { Button, Text, View, Image, StyleSheet, TextInput, ScrollView, Animated, TouchableOpacity, Dimensions } from 'react-native';
-import { Icon } from 'react-native-vector-icons/FontAwesome';
 import Product from '../../products/product';
+import Onboarding from '../../slide/Onboarding';
 import PictureList from './picture-list';
+import Icon from 'react-native-ionicons';
+import { FontAwesome } from '@expo/vector-icons';
+import { EvilIcons } from '@expo/vector-icons';
 
 const {WIDTH, HEIGHT} = Dimensions.get('window')
 
@@ -14,26 +17,31 @@ function HomeScreen({ navigation }) {
   <View style={styles.bar}>
   <View style={styles.buttonSearch}>
             <TextInput style={styles.searchProducts} placeholder='Search Store' />
-            <Image style={styles.iconsearch} source={require('../../images/search.png')} />
+            
           </View>
   </View>
 </Animated.View>
   return (
     <View style={styles.mains}>
       <View style= {styles.container}>
-      <ScrollView >
-        <View style={styles.topIcon}>
+      <ScrollView 
+      showsVerticalScrollIndicator={false}
+      showsHorizontalScrollIndicator={false}>
+        <View style={styles.topIcons}>
           <View style={styles.Img}>
             <Image style={styles.logo} source={require('../../images/Group.png')} />
+            <View style={{flexDirection: 'row',}}>
+            <FontAwesome name="map-marker" size={20} color="black" style={{position: 'absolute'}} />
             <Text style={styles.text}>Dhaka, Banassre</Text>
+            </View>
           </View>
           <View style={styles.buttonSearch}>
             <TextInput style={styles.searchProducts} placeholder='Search Store' />
-            <Image style={styles.iconsearch} source={require('../../images/search.png')} />
+            <EvilIcons name="search" size={28} color="black" style={styles.iconsearch} />
           </View>
           
             <View style={styles.slider}>
-            <PictureList  style={styles.sliders}/>
+              <Onboarding/>
             </View>
           <View style={styles.listProducts}>
             <View style={styles.offer}>
@@ -46,7 +54,9 @@ function HomeScreen({ navigation }) {
               </View>
             </View>
             <View>
-              <ScrollView 
+              <ScrollView
+              showsVerticalScrollIndicator={false}
+              showsHorizontalScrollIndicator={false} 
               horizontal>
                 <View style={{paddingRight: 18}}>
                 <Product />
@@ -80,6 +90,8 @@ function HomeScreen({ navigation }) {
             </View>
             <View>
               <ScrollView 
+              showsVerticalScrollIndicator={false}
+              showsHorizontalScrollIndicator={false}
               horizontal>
                 <View style={{paddingRight: 18}}>
                 <Product />
@@ -110,6 +122,8 @@ function HomeScreen({ navigation }) {
                 </View>
               </View>
               <ScrollView
+              showsVerticalScrollIndicator={false}
+              showsHorizontalScrollIndicator={false}
               horizontal
               style={styles.cardProducts}>
                   <TouchableOpacity>
@@ -133,6 +147,8 @@ function HomeScreen({ navigation }) {
               </ScrollView>
             <View>
               <ScrollView 
+              showsVerticalScrollIndicator={false}
+              showsHorizontalScrollIndicator={false}
               style={styles.cartGroceries}
               horizontal>
                 <View style={{paddingRight: 18}}>
@@ -182,15 +198,12 @@ const styles = StyleSheet.create({
     // height: 70,
     
   },
-  topIcon:{
-
-  },
   main:{
     flex: 1,
     // backgroundColor:'#ccc'
   },
   text:{
-    marginTop: 10,
+    marginTop: 12,
     fontSize: 17,
     fontWeight: 'bold',
     fontFamily: 'Gilroy-Light'
