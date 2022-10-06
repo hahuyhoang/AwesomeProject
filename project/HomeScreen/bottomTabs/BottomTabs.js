@@ -16,6 +16,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons'; 
 import Icon from 'react-native-vector-icons/Ionicons';
 import Explore from './Explore';
+import Product from '../../products/product';
 // import { MaterialIcons } from '@expo/vector-icons';
 
 

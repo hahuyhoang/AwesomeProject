@@ -101,7 +101,11 @@ const styles = StyleSheet.create({
         height:20,
         bottom:0,
         right:0,
-    }
+    },
+    textFailed: {
+        alignSelf: 'flex-end',
+        color: 'red',
+      },
     
 })
 export default styles;

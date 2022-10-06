@@ -6,175 +6,119 @@ import PictureList from './picture-list';
 import Icon from 'react-native-ionicons';
 import { FontAwesome } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
+import { FlatList } from 'react-native-gesture-handler'
+import Brand from './Brand/Brand';
 
-const {WIDTH, HEIGHT} = Dimensions.get('window')
+const { WIDTH, HEIGHT } = Dimensions.get('window')
 
 function HomeScreen({ navigation }) {
 
 
 
-<Animated.View style= {styles.header}>
-  <View style={styles.bar}>
-  <View style={styles.buttonSearch}>
-            <TextInput style={styles.searchProducts} placeholder='Search Store' />
-            
-          </View>
-  </View>
-</Animated.View>
+  <Animated.View style={styles.header}>
+    <View style={styles.bar}>
+      <View style={styles.buttonSearch}>
+        <TextInput style={styles.searchProducts} placeholder='Search Store' />
+
+      </View>
+    </View>
+  </Animated.View>
   return (
     <View style={styles.mains}>
-      <View style= {styles.container}>
-      <ScrollView 
-      showsVerticalScrollIndicator={false}
-      showsHorizontalScrollIndicator={false}>
-        <View style={styles.topIcons}>
-          <View style={styles.Img}>
-            <Image style={styles.logo} source={require('../../images/Group.png')} />
-            <View style={{flexDirection: 'row',}}>
-            <FontAwesome name="map-marker" size={20} color="black" style={{position: 'absolute'}} />
-            <Text style={styles.text}>Dhaka, Banassre</Text>
+      <View style={styles.container}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}>
+          <View style={styles.topIcons}>
+            <View style={styles.Img}>
+              <Image style={styles.logo} source={require('../../images/Group.png')} />
+              <View style={{ flexDirection: 'row', }}>
+                <FontAwesome name="map-marker" size={20} color="black" style={{ position: 'absolute' }} />
+                <Text style={styles.text}>Dhaka, Banassre</Text>
+              </View>
             </View>
-          </View>
-          <View style={styles.buttonSearch}>
-            <TextInput style={styles.searchProducts} placeholder='Search Store' />
-            <EvilIcons name="search" size={28} color="black" style={styles.iconsearch} />
-          </View>
-          
-            <View style={styles.slider}>
-              <Onboarding/>
+            <View style={styles.buttonSearch}>
+              <TextInput style={styles.searchProducts} placeholder='Search Store' />
+              <EvilIcons name="search" size={28} color="black" style={styles.iconsearch} />
             </View>
-          <View style={styles.listProducts}>
-            <View style={styles.offer}>
-              <View style={styles.textLeft}>
-              <Text style={styles.bigText}>Exclusive Offer</Text>
 
-              </View>
-              <View style={styles.textRight}>
-              <Text style={styles.miniText} onPress={() => {navigation.navigate('ListProDucts')}}>See all</Text>
-              </View>
-            </View>
-            <View>
-              <ScrollView
-              showsVerticalScrollIndicator={false}
-              showsHorizontalScrollIndicator={false} 
-              horizontal>
-                <View style={{paddingRight: 18}}>
-                <Product />
-                </View>
-                <View style={{paddingRight: 18}}>
-                <Product />
-                </View>
-                <View style={{paddingRight: 18}}>
-                <Product />
-                </View>
-                <View style={{paddingRight: 18}}>
-                <Product />
-                </View>
-                <View style={{paddingRight: 18}}>
-                <Product />
-                </View>
-              
-                
-              </ScrollView>
-            </View>
-              
+            <View style={styles.slider}>
+              <Onboarding />
             </View>
             <View style={styles.listProducts}>
-            <View style={styles.offer}>
-              <View style={styles.textLeft}>
-              <Text style={styles.bigText}>Best Selling</Text>
+              <View style={styles.offer}>
+                <View style={styles.textLeft}>
+                  <Text style={styles.bigText}>Exclusive Offer</Text>
+
+                </View>
+                <View style={styles.textRight}>
+                  <Text style={styles.miniText} onPress={() => { navigation.navigate('ListProDucts') }}>See all</Text>
+                </View>
               </View>
-              <View style={styles.textRight}>
-              <Text style={styles.miniText} onPress={() => {navigation.navigate('ListProDucts')}}>See all</Text>
-              </View>
-            </View>
-            <View>
-              <ScrollView 
-              showsVerticalScrollIndicator={false}
-              showsHorizontalScrollIndicator={false}
-              horizontal>
-                <View style={{paddingRight: 18}}>
+
+              <ScrollView
+                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
+                horizontal={true}
+              >
                 <Product />
-                </View>
-                <View style={{paddingRight: 18}}>
-                <Product />
-                </View>
-                <View style={{paddingRight: 18}}>
-                <Product />
-                </View>
-                <View style={{paddingRight: 18}}>
-                <Product />
-                </View>
-                <View style={{paddingRight: 18}}>
-                <Product />
-                </View>
               </ScrollView>
+
+
             </View>
-              
+            <View style={styles.listProducts}>
+              <View style={styles.offer}>
+                <View style={styles.textLeft}>
+                  <Text style={styles.bigText}>Best Selling</Text>
+                </View>
+                <View style={styles.textRight}>
+                  <Text style={styles.miniText} onPress={() => { navigation.navigate('ListProDucts') }}>See all</Text>
+                </View>
+              </View>
+              <View>
+                <ScrollView
+                  showsVerticalScrollIndicator={false}
+                  showsHorizontalScrollIndicator={false}
+                  horizontal>
+                  <View style={{ paddingRight: 18 }}>
+                    <Product />
+                  </View>
+                </ScrollView>
+              </View>
+
             </View>
             <View style={styles.listProducts}>
               <View style={styles.offers}>
                 <View style={styles.textLeft}>
-                <Text style={styles.bigText}>Groceries</Text>
+                  <Text style={styles.bigText}>Groceries</Text>
                 </View>
                 <View style={styles.textRight}>
-                <Text style={styles.miniText} onPress={() => {navigation.navigate('ListProDucts')}}>See all</Text>
+                  <Text style={styles.miniText} onPress={() => { navigation.navigate('ListProDucts') }}>See all</Text>
                 </View>
               </View>
-              <ScrollView
-              showsVerticalScrollIndicator={false}
-              showsHorizontalScrollIndicator={false}
-              horizontal
-              style={styles.cardProducts}>
-                  <TouchableOpacity>
-                    <View style={styles.proDuct}>
-                    <Image style={styles.image} source={require('../..//images/card-ProDucts.png')} />
-                    <Text style={styles.text}>Pulses</Text>
-                    </View>
-                  </TouchableOpacity>
-                  <TouchableOpacity>
-                    <View style={styles.proDuct1}>
-                    <Image style={styles.image} source={require('../../images/ProDucts-1.png')} />
-                    <Text style={styles.text}>Rice</Text>
-                    </View>
-                  </TouchableOpacity>
-                  <TouchableOpacity>
-                    <View style={styles.proDuct1}>
-                    <Image style={styles.image} source={require('../../images/ProDucts-1.png')} />
-                    <Text style={styles.text}>Rice</Text>
-                    </View>
-                  </TouchableOpacity>
-              </ScrollView>
-            <View>
-              <ScrollView 
-              showsVerticalScrollIndicator={false}
-              showsHorizontalScrollIndicator={false}
-              style={styles.cartGroceries}
-              horizontal>
-                <View style={{paddingRight: 18}}>
-                <Product />
-                </View>
-                <View style={{paddingRight: 18}}>
-                <Product />
-                </View>
-                <View style={{paddingRight: 18}}>
-                <Product />
-                </View>
-                <View style={{paddingRight: 18}}>
-                <Product />
-                </View>
-                <View style={{paddingRight: 18}}>
-                <Product />
-                </View>
-              </ScrollView>
+
+              <View style={{paddingTop: 15}}>
+
+                <Brand />
+              </View>
+              <View>
+                <ScrollView
+                  showsVerticalScrollIndicator={false}
+                  showsHorizontalScrollIndicator={false}
+                  style={styles.cartGroceries}
+                  horizontal>
+                  <View style={{ paddingRight: 18 }}>
+                    <Product />
+                  </View>
+                </ScrollView>
+              </View>
+
             </View>
-              
-            </View>
-            
-          
-      </View>
-          </ScrollView>
-      <View style={styles.main}></View>
+
+
+          </View>
+        </ScrollView>
+        <View style={styles.main}></View>
       </View>
     </View>
   );
@@ -183,41 +127,41 @@ export default HomeScreen;
 
 
 const styles = StyleSheet.create({
-  mains:{
+  mains: {
     flex: 1,
-    
+
     backgroundColor: '#fff'
   },
-  container:{
+  container: {
     flex: 1,
     marginTop: 35,
     marginHorizontal: 20,
   },
-  Img:{
+  Img: {
     alignItems: 'center',
     // height: 70,
-    
+
   },
-  main:{
+  main: {
     flex: 1,
     // backgroundColor:'#ccc'
   },
-  text:{
+  text: {
     marginTop: 12,
     fontSize: 17,
     fontWeight: 'bold',
     fontFamily: 'Gilroy-Light'
   },
-  logo:{
+  logo: {
     width: 45,
     resizeMode: 'stretch',
-    
+
   },
-  local:{
+  local: {
     marginTop: 10,
-    
+
   },
-  searchProducts:{
+  searchProducts: {
     borderWidth: 1,
     backgroundColor: '#F2F3F2',
     paddingHorizontal: 40,
@@ -226,40 +170,40 @@ const styles = StyleSheet.create({
     height: 50,
     fontFamily: 'Gilroy-Light'
   },
-  iconsearch:{
+  iconsearch: {
     position: 'absolute',
     marginHorizontal: 10
   },
-  buttonSearch:{
-    justifyContent:'center',
+  buttonSearch: {
+    justifyContent: 'center',
     marginTop: 20
   },
-  slider:{
+  slider: {
     marginTop: 20,
     width: WIDTH,
     height: HEIGHT
   },
-  offer:{
+  offer: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 15,
-    
-    
-    
+
+
+
   },
-  offers:{
+  offers: {
     flexDirection: 'row',
     alignItems: 'center',
-    
+
   },
-  textLeft:{
+  textLeft: {
     width: '85%'
   },
-  miniText:{
+  miniText: {
     color: '#53B175',
     fontFamily: 'Gilroy-Light'
   },
-  bigText:{
+  bigText: {
     fontSize: 18,
     fontFamily: 'Gilroy-Light'
   },
@@ -268,22 +212,22 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
-    
+
   },
-  listProducts:{
+  listProducts: {
     flex: 1,
     marginTop: 15,
-    
-    
+
+
   },
-  cardProducts:{
+  cardProducts: {
     marginBottom: 20,
     marginTop: 20
   },
-  cartGroceries:{
-    
+  cartGroceries: {
+
   },
-  proDuct:{
+  proDuct: {
     borderWidth: 1,
     flexDirection: 'row',
     alignItems: 'center',
@@ -293,9 +237,9 @@ const styles = StyleSheet.create({
     borderColor: '#fef1e4',
     fontFamily: 'Gilroy-Light',
     marginRight: 15
-    
-},
-proDuct1:{
+
+  },
+  proDuct1: {
     borderWidth: 1,
     flexDirection: 'row',
     alignItems: 'center',
@@ -306,13 +250,13 @@ proDuct1:{
     fontFamily: 'Gilroy-Light',
     marginRight: 15
 
-},
-text:{
+  },
+  text: {
     fontFamily: 'Gilroy-Light',
     fontSize: 15,
     marginLeft: 15
-},
-image:{
+  },
+  image: {
     marginHorizontal: 15
-}
+  }
 })

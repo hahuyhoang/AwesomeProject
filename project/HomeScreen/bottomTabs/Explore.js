@@ -1,118 +1,116 @@
 import * as React from 'react';
-import { Button, Image, SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
- import {StyleSheet} from 'react-native'
- import { EvilIcons } from '@expo/vector-icons';
+import { Button, FlatList, Image, SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { StyleSheet } from 'react-native'
+import { EvilIcons } from '@expo/vector-icons';
+import { BASE_URL } from '../../config';
+import axios from 'axios';
+import { useNavigation } from '@react-navigation/native';
+import { AuthContext } from '../../context/AuthContext';
 
 function Explore({ navigation }) {
-  return (
-    <SafeAreaView style={{backgroundColor: '#fff', flex: 1}}>
-    <View style={styles.main}>
-      <View style={styles.Header}>
-        <Text style={styles.TextHeader}>Find Products </Text>
-      </View>
-      <View style={styles.Body}>
-        <TextInput  placeholder='Search Store' style={styles.Search} />
-        <EvilIcons style={{position: 'absolute',top: '40%', left: '2%'}} name="search" size={24} color="black" />
-      </View>
-      <ScrollView
-      >
-        <View style={styles.ListItems}>
-          <TouchableOpacity style={styles.Items1}>
-            <View >
-              <Image style={styles.products} source={require('../../images/card-ProDucts.png')} />
+  const [isLoading, setIsLoading] = React.useState(true)
+  const { listproduct, userInfo } = React.useContext(AuthContext)
+
+  const [list, setList] = React.useState({});
+
+  React.useEffect(() => {
+    getList();
+  }, [])
+
+  const getList = () => {
+
+
+    axios.get(`${BASE_URL}/categories/list`, {
+      headers: { Authorization: `Bearer ${userInfo.token}` }
+
+    })
+
+      .then((res) => {
+        let list = res.data.list_category;
+        // console.log(list)
+        var x = list;
+        x.forEach(function (listproducts) {
+          // console.log(listproducts)
+        });
+        setList(list), JSON.stringify(list)
+
+
+
+        // console.log('================hihihih====================');
+        // console.log(`${userInfo.url}/${x.url}`);
+        // console.log('=======================hihihih=============');
+      })
+
+      .catch((e) => {
+        console.log('====================================');
+        console.log(`${BASE_URL}/categories/list`);
+        console.log('====================================');
+        console.log(`Loi o dau the nhi? ${e}`)
+
+      })
+      .finally(() => setIsLoading(false))
+  }
+  const renderItem = ({ item, index }) => {
+
+
+    // console.log('====================================');
+    // console.log(userInfo.token);
+    // console.log('====================================');
+    return (
+      
+        
+        <View >
+          <TouchableOpacity>
+            <View style={[styles.ListItems]}
+              backgroundColor={item.background}
+              borderColor={item.border_color}>
+              <Image style={styles.products} source={{ uri: `${userInfo.url}/${item.media.url}` }} />
+              <Text style={styles.textItems}>{item.name}</Text>
             </View>
-            <View>
-              <Text style={styles.textItems}>Frash Fruits - Vegetable</Text>
-            </View>
-            
           </TouchableOpacity>
-          <TouchableOpacity style={styles.Items2}>
-            <View >
-              <Image style={styles.products}  source={require('../../images/card-ProDucts.png')} />
-            </View>
-              <View>
-                <Text style={styles.textItems}>Frash Fruits - Vegetable</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.ListItems}>
-            <TouchableOpacity style={styles.Items3}>
-              <View >
-                <Image style={styles.products} source={require('../../images/card-ProDucts.png')} />
-              </View>
-              <View>
-                <Text style={styles.textItems}>Frash Fruits - Vegetable</Text>
-              </View>
-              
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.Items4}>
-              <View >
-                <Image style={styles.products} source={require('../../images/card-ProDucts.png')} />
-              </View>
-                <View>
-                  <Text style={styles.textItems}>Frash Fruits - Vegetable</Text>
-                </View>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.ListItems}>
-            <TouchableOpacity style={styles.Items3}>
-              <View >
-                <Image style={styles.products} source={require('../../images/card-ProDucts.png')} />
-              </View>
-              <View>
-                <Text style={styles.textItems}>Frash Fruits - Vegetable</Text>
-              </View>
-              
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.Items4}>
-              <View >
-                <Image style={styles.products} source={require('../../images/card-ProDucts.png')} />
-              </View>
-                <View>
-                  <Text style={styles.textItems}>Frash Fruits - Vegetable</Text>
-                </View>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.ListItems}>
-            <TouchableOpacity style={styles.Items3}>
-              <View >
-                <Image style={styles.products} source={require('../../images/card-ProDucts.png')} />
-              </View>
-              <View>
-                <Text style={styles.textItems}>Frash Fruits - Vegetable</Text>
-              </View>
-              
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.Items4}>
-              <View >
-                <Image style={styles.products} source={require('../../images/card-ProDucts.png')} />
-              </View>
-                <View>
-                  <Text style={styles.textItems}>Frash Fruits - Vegetable</Text>
-                </View>
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
-    </View>
+        </View>
+      
+
+    )
+
+  }
+  return (
+    <SafeAreaView style={{ backgroundColor: '#fff', flex: 1 }}>
+      <View style={styles.main}>
+        <View style={styles.Header}>
+          <Text style={styles.TextHeader}>Find Products</Text>
+        </View>
+        <View style={styles.Body}>
+          <TextInput placeholder='Search Store' style={styles.Search} />
+          <EvilIcons style={{ position: 'absolute', top: '40%', left: '2%' }} name="search" size={24} color="black" />
+        </View>
+        <FlatList
+          data={list}
+          renderItem={renderItem}
+          keyExtractor={(item) => `key-${item.id}`}
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
+        />
+      </View>
     </SafeAreaView>
   );
 }
 export default Explore;
 const styles = StyleSheet.create({
-  Header:{
-    alignItems:'center',
-    
+  Header: {
+    alignItems: 'center',
+
   },
-  TextHeader:{
+  TextHeader: {
     fontFamily: 'Gilroy-Light',
     fontSize: 16
   },
-  main:{
+  main: {
     marginTop: 20,
     marginHorizontal: 18,
     // backgroundColor : '#fff'
-  }, 
-  Search:{
+  },
+  Search: {
     borderWidth: 1,
     marginTop: 10,
     backgroundColor: '#F2F3F2',
@@ -121,12 +119,12 @@ const styles = StyleSheet.create({
     fontFamily: 'Gilroy-Light',
     padding: 7,
     borderColor: '#f2f3f2'
-    
+
   },
-  Body:{
-    
+  Body: {
+
   },
-  Items1:{
+  Items1: {
     borderWidth: 1,
     width: 150,
     alignItems: 'center',
@@ -137,55 +135,29 @@ const styles = StyleSheet.create({
     backgroundColor: '#eef7f1',
     borderColor: '#eef7f1'
   },
-  textItems:{
+  textItems: {
     fontFamily: 'Gilroy-Light'
   },
-  ListItems:{
-    flexDirection: 'row',
+  ListItems: {
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 20
-    
-  },
-  Items2:{
-    borderWidth: 1,
+    marginTop: 20,
     width: 150,
-    alignItems: 'center',
     height: 180,
-    justifyContent: 'center',
     borderRadius: 10,
-    marginHorizontal: 10,
-    backgroundColor: '#fbf2e9',
-    borderColor: '#fbf2e9'
+
   },
-  Items3:{
-    borderWidth: 1,
-    width: 150,
-    alignItems: 'center',
-    height: 180,
-    justifyContent: 'center',
-    borderRadius: 10,
-    marginHorizontal: 10,
-    backgroundColor: '#fde8e4',
-    borderColor: '#fde8e4'
-  },
-  Items4:{
-    borderWidth: 1,
-    width: 150,
-    alignItems: 'center',
-    height: 180,
-    justifyContent: 'center',
-    borderRadius: 10,
-    marginHorizontal: 10,
-    backgroundColor: '#f4ebf7',
-    borderColor: '#f4ebf7'
-  },
-  ImgSearch:{
+
+  ImgSearch: {
     position: 'absolute',
-    marginTop : 22,
-    marginLeft : 10
+    marginTop: 22,
+    marginLeft: 10,
+
   },
-  products:{
-    marginBottom : 25
+  products: {
+    marginBottom: 25,
+    width: '60%',
+    height: '50%'
   }
 })

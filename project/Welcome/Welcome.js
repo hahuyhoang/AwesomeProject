@@ -1,8 +1,9 @@
 import { Text, StyleSheet, View, Button, Image, ImageBackground, TouchableOpacity, Dimensions } from 'react-native'
-import React, { Component, useState } from 'react';
-import { useFonts } from 'expo-font';
+import React, { Component, useContext, useState } from 'react';
+import { isLoading, useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
-
+import Spinner from 'react-native-loading-spinner-overlay'
+import { AuthContext } from '../context/AuthContext';
 const {WIDTH, HEIGHT} = Dimensions.get('window')
 
 
@@ -15,8 +16,10 @@ const Welcome = ({navigation}) => {
     return <AppLoading />
   }
 
+  // const {isLoading} = useContext(AuthContext)
     return (
       <View style={styles.container}>
+         {/* <Spinner visible={isLoading} /> */}
           <ImageBackground style={styles.background} source ={require('../images/back.jpg')} resizeMode="cover">
 
               <View style={{flex:2}}></View>
@@ -28,7 +31,8 @@ const Welcome = ({navigation}) => {
                 </Text>
                 <Text style = {styles.title}>Ger your groceries in as fast as one hour</Text>
                 
-              <TouchableOpacity style={styles.getstarted} onPress={() => {navigation.navigate('Signin')}} >
+              <TouchableOpacity style={styles.getstarted} onPress={() => {navigation.navigate('Login')}} >
+                 
                   <Text style ={ styles.text} >Get Started</Text>
                 </TouchableOpacity>
               </View>

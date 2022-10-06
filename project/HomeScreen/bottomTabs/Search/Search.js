@@ -35,11 +35,11 @@ const Search = () => {
         <View style={styles.wrap}>
           <ScrollView>
             <View style={styles.colums}>
+              {/* <Product />
               <Product />
               <Product />
               <Product />
               <Product />
-              <Product />
               <Product />            
               <Product />            
               <Product />            
@@ -47,7 +47,7 @@ const Search = () => {
               <Product />            
               <Product />            
               <Product />            
-              <Product />            
+              <Product />             */}
             </View>     
           </ScrollView>
         </View>

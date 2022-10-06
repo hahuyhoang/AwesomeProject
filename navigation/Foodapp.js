@@ -14,36 +14,51 @@ import MyCart from '../project/HomeScreen/bottomTabs/MyCart';
 import Accepted from '../project/HomeScreen/bottomTabs/DoneCheckOut/Accepted';
 import ErrorScreen from '../project/Error/ErrorScreen';
 import CheckCode from '../project/checkCode/CheckCode';
+import { AuthContext } from '../project/context/AuthContext';
+
 
 
 const Stack = createNativeStackNavigator();
 
 const MyStack = (props) => {
+  const { userInfo } = React.useContext(AuthContext)
+
+
   return (
+
     <NavigationContainer>
       <Stack.Navigator screenOptions={{
-      headerShown: false
-    }}>
-      <Stack.Screen name="Welcome" component={Welcome} />
+        headerShown: false
+      }}>
+        {userInfo.token ? (
+          <>
+          <Stack.Screen name="HomeScreen" component={BottomTab} />
+          <Stack.Screen name="Product" component={Product} />
+          <Stack.Screen name="ListProDucts" component={ListProDucts} />
+          <Stack.Screen name="ProductDetail" component={ProductDetail} />
+          <Stack.Screen
+            name="Add" component={Add}
+            options={{ presentation: 'modal' }} />
+          <Stack.Screen name="MyCart" component={MyCart} />
+          <Stack.Screen name="Accepted" component={Accepted}
+            options={{ presentation: 'modal' }} />
+          <Stack.Screen name="ErrorScreen" component={ErrorScreen} />
+          
+          </>
+          ) : (
+            <>
+            <Stack.Screen name="Welcome" component={Welcome} />
         <Stack.Screen name="Signin" component={SignInScreen} />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="HomeScreen" component={BottomTab} />
-        <Stack.Screen name="Product" component={Product} />
+      <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Register" component={Register} />
-        <Stack.Screen name="ListProDucts" component={ListProDucts} />
-        <Stack.Screen name="ProductDetail" component={ProductDetail} />
-        <Stack.Screen 
-          name="Add" component={Add}
-          options={{presentation: 'modal'}} />
-        <Stack.Screen name="MyCart" component={MyCart} />
-        <Stack.Screen name="Accepted" component={Accepted} 
-        options={{presentation: 'modal'}}/>
-        <Stack.Screen name="ErrorScreen" component={ErrorScreen} />
         <Stack.Screen name="CheckCode" component={CheckCode} />
-
+        </>
+        )}
+      
         
       </Stack.Navigator>
     </NavigationContainer>
+
   )
 }
 

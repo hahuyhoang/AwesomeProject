@@ -8,20 +8,26 @@ import { AntDesign } from '@expo/vector-icons';
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+import { AuthContext } from '../../context/AuthContext';
+import Spinner from 'react-native-loading-spinner-overlay'
 
 function Account({ navigation }) {
+  const { userInfo, isLoading, logout,email} = React.useContext(AuthContext)
+  // console.log('====================================');
+  // console.log(userInfo.user.em);
+  // console.log('====================================');
   return (
     <SafeAreaView style={{ flex: 1,backgroundColor:'#fff' }}>
       <View style={styles.AccountMain}>
         <Image source={require('../../images/user_1.png')} />
         <View style={styles.AccountInfoUser}>
           <View style={styles.AccountInfo} >
-            <Text style={styles.UserName}>Afsar Hossen</Text>
+            <Text style={styles.UserName}>{userInfo.user.name}</Text>
             <TouchableOpacity style={{paddingLeft:8}}>
               <Image  source={require('../../images/pen.png')} />
             </TouchableOpacity>
           </View>
-          <Text style={styles.GmailUser}>Imshuvo97@gmail.com</Text>
+          <Text style={styles.GmailUser}>{userInfo.user.email}</Text>
         </View>
       </View>
       <ScrollView 
@@ -118,11 +124,12 @@ function Account({ navigation }) {
           </View>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity style={styles.Botton}>
+      <TouchableOpacity style={styles.Botton} onPress={logout}>
         <View style={styles.btnIcon}>
           <Image  source={require('../../images/out.png')} />
         </View>
         <View style={styles.BtnOut}>
+          <Spinner visible={isLoading} />
           <Text style={styles.BtnText} >Log Out</Text>
         </View>
       </TouchableOpacity>
