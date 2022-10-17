@@ -1,14 +1,15 @@
-import { KeyboardAvoidingView, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React, {useState} from 'react'
+import { KeyboardAvoidingView, SafeAreaView, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import React, { useState } from 'react'
 import { Feather } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import CodeInput from './CodeInput';
 import { AuthContext } from '../context/AuthContext';
+import { BASE_URL } from '../config';
 
 
-export default function CheckCode({ navigation }) {
+export default function CheckCode({ navigation, route }) {
 
-    const [userInfoRegister] = useState(AuthContext)
+    const [userInfoRegister] = useState({})
 
 
 
@@ -17,6 +18,21 @@ export default function CheckCode({ navigation }) {
 
     const MAX_CODE_LEGTH = 5;
 
+
+
+    const checkCodeRes = (user_id, email, code) => {
+        axios.post(`${BASE_URL}/check-register-code`,{
+            user_id,
+            email,
+            code
+        })
+        .then(res =>{
+            
+        })
+    }
+    console.log('=======================ffffffffffff=============');
+    console.log(`${route.params.paramKey}`);
+    console.log('======================ffffff==============');
     return (
         <SafeAreaView>
             <View style={styles.header}>
@@ -36,18 +52,17 @@ export default function CheckCode({ navigation }) {
             <View style={styles.container}>
                 <View style={styles.body}>
                     <View style={styles.infoEmail}>
-                        <Text style={styles.TextEmail}>Code send to your email, please check in your email {userInfoRegister.name}</Text>
+                        <Text style={styles.TextEmail}>Code send to your email, please check in your email {}</Text>
                         <MaterialCommunityIcons name="email-open-outline" size={28} color="black" />
-                        <Text style={styles.TextEmail} > Email: ************@gmail.com</Text>
+                        <Text style={styles.TextEmail} > Email: {route.params.paramKey.email}</Text>
                     </View>
                 </View>
-                <CodeInput 
-                    setPinReady={setPinReady}
-                    code={code}
-                    setCode={setCode}
-                    maxLength={MAX_CODE_LEGTH}
-
-                    />
+                <TextInput
+                    placeholder="nhap code vao di"
+                    style={styles.input}
+                    
+                    
+                />
             </View>
         </SafeAreaView>
     )
@@ -75,13 +90,23 @@ const styles = StyleSheet.create({
         marginTop: 25,
         marginHorizontal: 10
     },
-    infoEmail:{
+    infoEmail: {
         // justifyContent: 'center',
         alignItems: 'center',
-        
+
     },
-    TextEmail:{
+    TextEmail: {
         marginBottom: 10,
         fontFamily: 'Gilroy-Light'
-    }
+    },
+    input : {
+        position :"relative",
+        width : "100%",
+        backgroundColor: "#0,0,0,0",
+        height : 36 ,
+        fontSize: 12,
+        borderBottomWidth:1,
+        borderColor: "#E9E9E9",
+        autoComplete:""
+    },
 })

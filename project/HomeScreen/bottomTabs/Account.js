@@ -13,9 +13,6 @@ import Spinner from 'react-native-loading-spinner-overlay'
 
 function Account({ navigation }) {
   const { userInfo, isLoading, logout,email} = React.useContext(AuthContext)
-  // console.log('====================================');
-  // console.log(userInfo.user.em);
-  // console.log('====================================');
   return (
     <SafeAreaView style={{ flex: 1,backgroundColor:'#fff' }}>
       <View style={styles.AccountMain}>

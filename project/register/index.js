@@ -3,6 +3,9 @@ import React, { useContext, useState } from 'react'
 import { Entypo } from '@expo/vector-icons';
 import styles from '../register/style'
 import { AuthContext } from '../context/AuthContext'
+import { BASE_URL } from '../config';
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Register = ({ navigation }) => {
   const val = useContext(AuthContext)
@@ -11,7 +14,8 @@ const Register = ({ navigation }) => {
   const [email, setEmail] = useState(null)
   const [password, setPassword] = useState(null)
   const [password_confirmation, setPassword_confirmation] = useState(null)
-  const { register } = useContext(AuthContext)
+  const [userInfoRegister, setUserInfoRegister] = useState({})
+  
   const [checkValidEmail, setCheckValidEmail] = useState(false);
 
 
@@ -26,6 +30,28 @@ const Register = ({ navigation }) => {
       setCheckValidEmail(true);
     }
   };
+
+
+
+  const register = (name, email, password, password_confirmation) => {
+    axios.post(`${BASE_URL}/register`, {
+        name,
+        email,
+        password,
+        password_confirmation
+    })
+
+        .then(res => {
+            let userInfoRegister = res.data;
+            console.log(userInfoRegister.user);
+            setUserInfoRegister(userInfoRegister.id)
+            AsyncStorage.setItem('userInfoRegister', JSON.stringify(userInfoRegister))
+        })
+        .catch(e => {
+            console.log(`register error aaaaar ${e}`)
+        });
+}
+
   return (
     <KeyboardAvoidingView style={styles.main}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -111,7 +137,9 @@ const Register = ({ navigation }) => {
           <View style={styles.footer}>
             <TouchableOpacity style={styles.submit} onPress={() => {
               register(name, email, password, password_confirmation)
-              navigation.navigate('CheckCode')
+              navigation.navigate('CheckCode',{
+                paramKey: userInfoRegister
+              })
             }}>
               <Text style={styles.singin}>Register</Text>
             </TouchableOpacity>

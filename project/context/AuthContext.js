@@ -13,24 +13,9 @@ export default function AuthProvider({ children }) {
     const [isLoading, setIsLoading] = useState(false);
     const [proDuct, setProDuct] = useState({})
 
-    const register = (name, email, password, password_confirmation) => {
-        console.log('log', `${BASE_URL}/register`)
-        axios.post(`${BASE_URL}/register`, {
-            name,
-            email,
-            password,
-            password_confirmation
-        })
 
-            .then(res => {
-                let userInfoRegister = res.data;
-                console.log(userInfoRegister);
-                AsyncStorage.setItem('userInfoRegister', JSON.stringify(userInfoRegister))
-            })
-            .catch(e => {
-                console.log(`register error aaaaar ${e}`)
-            });
-    }
+
+
 
     const login = (email, password) => {
         setIsLoading(true);
@@ -43,9 +28,8 @@ export default function AuthProvider({ children }) {
                 let userInfo = res.data
                 console.log(userInfo);
                 setUserInfo(userInfo);
-                AsyncStorage.setItem('userInfo',JSON.stringify(userInfo))
+                AsyncStorage.setItem('userInfo', JSON.stringify(userInfo))
                 setIsLoading(false)
-
             })
             .catch(e => {
                 setIsLoading(false)
@@ -68,25 +52,13 @@ export default function AuthProvider({ children }) {
             setIsLoading(false)
         });
     }
-    // const listproduct = async () => {
-    //     const res = await axios.get(`${BASE_URL}/products/list`,{
-    //         headers: { Authorization: `Bearer ${userInfo.token}` }
-
-    //     }) 
-    //     const data = await res.json();
-    //     proDuct = data;
-    //     setProDuct(data)
-
-    // }
     return (
         <AuthContext.Provider
             value={{
                 isLoading,
                 userInfo,
-                register,
                 login,
                 logout,
-                // listproduct
             }}>
             {children}
         </AuthContext.Provider>

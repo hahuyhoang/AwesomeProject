@@ -10,9 +10,9 @@ import AuthProvider from './project/context/AuthContext';
 const Tab = createBottomTabNavigator();
 export default function App() {
   return( 
-  <AuthProvider>
-    <MainNavigator />
-  </AuthProvider>
+      <AuthProvider>
+        <MainNavigator />
+      </AuthProvider>
   )
 }
 

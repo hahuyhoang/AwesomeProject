@@ -15,6 +15,7 @@ import Accepted from '../project/HomeScreen/bottomTabs/DoneCheckOut/Accepted';
 import ErrorScreen from '../project/Error/ErrorScreen';
 import CheckCode from '../project/checkCode/CheckCode';
 import { AuthContext } from '../project/context/AuthContext';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
@@ -22,8 +23,6 @@ const Stack = createNativeStackNavigator();
 
 const MyStack = (props) => {
   const { userInfo } = React.useContext(AuthContext)
-
-
   return (
 
     <NavigationContainer>

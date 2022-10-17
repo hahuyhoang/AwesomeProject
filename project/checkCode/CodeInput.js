@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TextInput, View } from 'react-native'
 import React from 'react'
 
 export default function CodeInput() {
   return (
     <View>
-      <Text>CodeInput</Text>
+      <TextInput></TextInput>
     </View>
   )
 }

@@ -11,7 +11,7 @@ import user_login from '../api/user_api'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Login = ({ navigation }) => {
-
+  // const { navigate } = this.props.navigation;
 
 
   const { isLoading, login } = useContext(AuthContext)
@@ -92,6 +92,7 @@ const Login = ({ navigation }) => {
             style={styles.input}
             value={email}
             onChangeText={text => handleCheckEmail(text)}
+            defaultValue="admin@admin.com"
           />
         </View>
         {checkValidEmail ? (
@@ -107,6 +108,7 @@ const Login = ({ navigation }) => {
             style={styles.input}
             secureTextEntry={getPasswordVisible ? false : true}
             onChangeText={text => setPassword(text)}
+            
           >
           </TextInput>
           <TouchableOpacity style={{ position: 'absolute', right: 0, top: '20%' }}
