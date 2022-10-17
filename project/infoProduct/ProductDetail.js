@@ -1,4 +1,3 @@
-
 import { StyleSheet, Text, View, Dimensions, SafeAreaView, ScrollView, Image, TouchableOpacity, FlatList, ActivityIndicator } from 'react-native'
 import React, { useEffect, useState, useRef, useContext } from 'react'
 import Rating from '../HomeScreen/Rating';
@@ -21,16 +20,44 @@ export default function ProductDetail({ route, navigation }) {
     const { listproduct, userInfo } = useContext(AuthContext)
     const [img, setImg] = useState({})
     const [isLoading, setIsLoading] = useState(false)
+    const [color,setColor] = useState ({})
+
+    const AddFavourite = (infoProduct)=>
+    {
+      const itemfavorite = {
+        id: infoProduct.id,
+        image:infoProduct.media.url,
+        name:infoProduct.name,
+        title:infoProduct.title,
+        price: infoProduct.price
+      }
+      AsyncStorage.getItem('mycart').then((datacart)=>{
+          if (datacart !== null) {
+            const mycart = JSON.parse(datacart)
+            mycart.push(itemfavorite)
+            AsyncStorage.setItem('mycart',JSON.stringify(mycart));
+          }
+          else{
+            const mycart  = []
+            mycart.push(itemfavorite)
+            AsyncStorage.setItem('mycart',JSON.stringify(mycart));
+          }
+          alert("Add Favorite")
+         
+        })
+        .catch((err)=>{
+          console.log(err)
+        })
+    
+  
+    }
     const ProductInfo = () => {
         setIsLoading(true)
         axios.get(`${BASE_URL}/products/item/${route.params.paramKey}`,
             {
-
                 headers: { Authorization: `Bearer ${userInfo.token}` }
             })
-
             .then((res) => {
-
                 let infoProduct = res.data.data_product
                 setInfoProduct(infoProduct), JSON.stringify(infoProduct)
                 // console.log(infoProduct.media);
@@ -44,9 +71,12 @@ export default function ProductDetail({ route, navigation }) {
             })
     }
     useEffect(() => {
-        ProductInfo();
+        const wait = navigation.addListener('focus', () => {
+          ProductInfo();
+        });
         setImgList(data);
-    }, [])
+        return wait;
+      }, [])
 
     const data = [
         {
@@ -79,7 +109,10 @@ export default function ProductDetail({ route, navigation }) {
                 <View style={{ position: 'absolute', right: 0 }}>
                     <Ionicons name="ios-share-outline" size={24} color="black" />
                 </View>
-                <TouchableOpacity style={{ position: 'absolute' }} onPress={() => { navigation.navigate('HomeScreen') }}>
+                <TouchableOpacity   style={{ position: 'absolute' }} onPress={() => {
+                    
+                     navigation.navigate('HomeScreen')
+                      }}>
                     <Ionicons name="chevron-back" size={24} color="black" />
                 </TouchableOpacity>
             </View>
@@ -90,7 +123,9 @@ export default function ProductDetail({ route, navigation }) {
                         <Text style={styles.miniText}>{infoProduct.title}</Text>
                     </View>
                     <View>
-                        <EvilIcons name="heart" size={24} color="black" style={styles.rightIcon} />
+                        <TouchableOpacity onPress={()=> AddFavourite(infoProduct) }>
+                            <EvilIcons name="heart" size={25} color="black" style={styles.rightIcon} />
+                        </TouchableOpacity>
                     </View>
                 </View>
                 <View style={styles.TopBody} >
