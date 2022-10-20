@@ -3,7 +3,6 @@ import { Button, Text, View, Image, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from './HomeScreen';
 import Search from './Search/Search';
-
 import Account from './Account';
 import Favourite from './Favourite';
 import MyCart from './MyCart';

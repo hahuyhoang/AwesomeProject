@@ -5,7 +5,10 @@ import { Entypo } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 
 const {height} = Dimensions.get('window')
-export default function Add({navigation}) {
+export default function Add({navigation, route}) {
+  console.log('====================================');
+  console.log(route.params.key);
+  console.log('====================================');
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={[styles.flexRow, styles.topheader, {flex: 1}]}>
@@ -41,7 +44,7 @@ export default function Add({navigation}) {
           <Text style={styles.textBody}>Total Cost</Text>
         </View>
           <TouchableOpacity style={styles.leftItem}>
-            <Text style={styles.text}>$13.97</Text>
+            <Text style={styles.text}>${route.params.key}</Text>
             <Entypo name="chevron-right" size={24} color="black" />
           </TouchableOpacity>
       </View>

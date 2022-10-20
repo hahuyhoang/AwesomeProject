@@ -70,14 +70,15 @@ const styles = StyleSheet.create({
         height: 15,
     },
     img: {
-
         width: '100%',
-        height: '100%',
+        height: '80%',
         resizeMode: 'contain',
     },
     imge: {
         width: '100%',
-        height: 120
+        height: 130,
+        alignItems:'center',
+        justifyContent: 'center',
     },
     cardPrice: {
 

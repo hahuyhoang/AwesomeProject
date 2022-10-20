@@ -3,11 +3,17 @@ const {height} = Dimensions.get('window')
 const styles = StyleSheet.create({
 // ............MyCart............
 CartTop:{
+  width:'100%',
     justifyContent:'center',
     alignItems:'center',  
     borderBottomWidth :1,
     paddingVertical:20,
     borderColor:'#E2E2E2',
+  },
+  remove:{
+    position:'absolute',
+    right:20,
+    top:20
   },
   CartText:{
       fontSize:18,
@@ -22,7 +28,7 @@ CartTop:{
       height:140,
       flexDirection:'row',
       width:'100%',
-      justifyContent:'space-between',
+    //   justifyContent:'space-between',
       borderBottomWidth:1,
       borderColor:'#E2E2E2',
   },
@@ -32,6 +38,8 @@ CartTop:{
   },
   Price:{
       paddingVertical:10,
+      paddingLeft:'8%',
+      width:'55%'
   },
   CartImage:{
       resizeMode: 'stretch',
@@ -59,18 +67,19 @@ CartTop:{
       justifyContent:'center'
   },
   ProductPrice:{
-  },
+    width:'20%'
+  },    
   ProductText:{
       paddingVertical:5,
       color:"#B3B3B3",
   },
   productDelete:{
     //   height:'10%',
-      paddingHorizontal:10,
+      paddingHorizontal:25,
       paddingVertical:10
   },
   PriceName:{
-      paddingTop:64,
+      paddingTop:'50%',
       alignItems:'center',
       justifyContent:'center'
   },
@@ -145,9 +154,9 @@ CartTop:{
   },
 // .............ProductFavorurite..............
 ProductPriceName:{
-    width: '40%',
-    alignItems:'center',
-    justifyContent:'center'
+    width: '55%',
+    justifyContent:'center',
+    paddingLeft:'10%'
 },
 ProductFavourite:{
     width: '30%',
@@ -156,13 +165,12 @@ ProductFavourite:{
     justifyContent:'center',
 },
 ProductNext:{
-    paddingHorizontal:15
+    paddingLeft:10
 },
 CartProductRow:{
     height:120,
     flexDirection:'row',
     width:'100%',
-    justifyContent:'space-between',
     borderBottomWidth:1,
     borderColor:'#E2E2E2',
 },
@@ -314,6 +322,7 @@ TextError: {
     fontSize: 25,
     marginBottom: 5
 },
+
 miniText: {
     fontFamily: 'Gilroy-Medium'
 },
@@ -365,6 +374,9 @@ container:{
     flexDirection: 'row',
     alignItems: 'center',
     
+  },
+  FavouritePrice:{
+    width:'10%',
   },
   textBody:{
     fontSize: 15,

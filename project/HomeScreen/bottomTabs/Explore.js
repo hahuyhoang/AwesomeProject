@@ -10,7 +10,7 @@ import { AuthContext } from '../../context/AuthContext';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { AntDesign } from '@expo/vector-icons';
 const { width } = Dimensions.get("window");
-const cardWidth = width / 2.5;
+const cardWidth = width / 2.3;
 
 
 
@@ -90,10 +90,10 @@ function Explore({ navigation }) {
 
     return (
 
-      <View style={{ flexDirection: 'row' }}>
+      <View style={{flex:1, flexDirection: 'row' }}>
 
 
-        <View style={{ flex: 0.5, marginLeft: 15 }}>
+        <View style={{ flex: 1, marginLeft: 20 }}>
           <TouchableOpacity>
             <View style={[styles.ListItems]}
               backgroundColor={item.background}
@@ -103,7 +103,7 @@ function Explore({ navigation }) {
             </View>
           </TouchableOpacity>
         </View>
-        <View style={{ flex: 0.5 }}>
+        <View style={{ flex: 1 }}>
           <TouchableOpacity>
             <View style={[styles.ListItems]}
               backgroundColor={item.background}
@@ -140,7 +140,7 @@ function Explore({ navigation }) {
 
 
     return (
-      <SafeAreaView style={{ paddingHorizontal: 10 }}>
+      <SafeAreaView style={{ flex:1,marginLeft:15 }}>
         <View style={styles.product}>
           <View style={styles.imge}>
             <Image style={styles.img} source={{ uri: `${userInfo.url}/${item.media.url}` }} />
@@ -181,12 +181,11 @@ function Explore({ navigation }) {
             // onChangeText={() => setSearch(text)}
             onPressIn={() => { setModalVisible(true) }}
           />
-          <EvilIcons style={{ position: 'absolute', top: '40%', left: '2%' }} name="search" size={24} color="black" />
+          <EvilIcons style={{ position: 'absolute', top: '40%', left: '2%' }} name="search" size={28} color="black" />
         </TouchableWithoutFeedback>
         <FlatList
           style={{ paddingHorizontal: 10 }}
           data={list}
-
           renderItem={renderItem}
           keyExtractor={(item) => `key-${item.id}`}
           showsVerticalScrollIndicator={false}
@@ -216,7 +215,7 @@ function Explore({ navigation }) {
               </TouchableWithoutFeedback>
             </View>
               <FlatList
-                style={{ marginTop: 20, paddingHorizontal: 45 }}
+                style={{ marginTop: 20, width: '100%' }}
                 data={filterSearch}
                 renderItem={renderData}
                 numColumns= {2}
@@ -251,9 +250,9 @@ const styles = StyleSheet.create({
     marginRight: '33%'
   },
   main: {
+    width:'100%',
     marginTop: 20,
-    marginHorizontal: 18,
-    // backgroundColor : '#fff'
+    paddingHorizontal: 18,
   },
   Search: {
     borderWidth: 1,
@@ -261,6 +260,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F2F3F2',
     borderRadius: 10,
     paddingLeft: 35,
+    height:50,
     fontFamily: 'Gilroy-Light',
     padding: 7,
     borderColor: '#f2f3f2'
@@ -303,7 +303,7 @@ const styles = StyleSheet.create({
   products: {
     marginBottom: 25,
     width: '60%',
-    height: '50%'
+    height: '50%',
   },
   modal: {
     flex: 1,
@@ -311,10 +311,8 @@ const styles = StyleSheet.create({
 
   },
   product: {
-
     width: cardWidth,
     borderRadius: 10,
-    height: 250,
     borderColor: '#ccc',
     borderWidth: 1,
     backgroundColor: '#fff',
@@ -325,7 +323,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
   },
   title: {
-
     fontSize: 16,
     fontWeight: 'bold',
     color: '#181725',

@@ -41,18 +41,21 @@ const Product =  ({}) => {
       price: item.price
     }
     
-    AsyncStorage.getItem('cart').then((datacart)=>{
+     AsyncStorage.getItem('cart')
+      .then((datacart)=>{
+        
         if (datacart !== null) {
           const cart = JSON.parse(datacart)
           cart.push(itemcart)
           AsyncStorage.setItem('cart',JSON.stringify(cart));
         }
+        
         else{
           const cart  = []
           cart.push(itemcart)
           AsyncStorage.setItem('cart',JSON.stringify(cart));
         }
-        console.log("========",cart)
+        console.log("========",item)
        
       })
       .catch((err)=>{
@@ -65,7 +68,6 @@ const Product =  ({}) => {
 
     axios.get(`${BASE_URL}/products/list`, {
       headers: { Authorization: `Bearer ${userInfo.token}` }
-
     })
       .then((res) => {
         let list = res.data.list_product;
@@ -76,11 +78,6 @@ const Product =  ({}) => {
         setList(x), JSON.stringify(x)
       })
       .catch((e) => {
-        console.log('====================================');
-        console.log(`${BASE_URL}/products/list`);
-        console.log('====================================');
-        console.log(`Loi o dau the nhi? ${e}`)
-
       })
       .finally(() => setIsLoading(false))
   }

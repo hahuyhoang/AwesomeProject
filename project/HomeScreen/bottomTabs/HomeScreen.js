@@ -13,8 +13,6 @@ const { WIDTH, HEIGHT } = Dimensions.get('window')
 
 function HomeScreen({ navigation }) {
 
-
-
   <Animated.View style={styles.header}>
     <View style={styles.bar}>
       <View style={styles.buttonSearch}>
@@ -33,7 +31,7 @@ function HomeScreen({ navigation }) {
             <View style={styles.Img}>
               <Image style={styles.logo} source={require('../../images/Group.png')} />
               <View style={{ flexDirection: 'row', }}>
-                <FontAwesome name="map-marker" size={20} color="black" style={{ position: 'absolute' }} />
+                <FontAwesome name="map-marker" size={16} color="black" style={{ position: 'absolute',top:-2 }} />
                 <Text style={styles.text}>Dhaka, Banassre</Text>
               </View>
             </View>
@@ -63,8 +61,6 @@ function HomeScreen({ navigation }) {
               >
                 <Product />
               </ScrollView>
-
-
             </View>
             <View style={styles.listProducts}>
               <View style={styles.offer}>
@@ -153,13 +149,13 @@ const styles = StyleSheet.create({
     fontFamily: 'Gilroy-Light'
   },
   logo: {
+    marginBottom:10,
     width: 45,
     resizeMode: 'stretch',
 
   },
   local: {
     marginTop: 10,
-
   },
   searchProducts: {
     borderWidth: 1,

@@ -11,6 +11,7 @@ import { AuthContext } from '../context/AuthContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
+
 const { width: screenWidth } = Dimensions.get('screen')
 
 export default function ProductDetail({ route, navigation }) {
@@ -20,12 +21,12 @@ export default function ProductDetail({ route, navigation }) {
     const { listproduct, userInfo } = useContext(AuthContext)
     const [img, setImg] = useState({})
     const [isLoading, setIsLoading] = useState(false)
-    const [color,setColor] = useState ({})
-
-    const AddFavourite = (infoProduct)=>
-    {
+    const [state, setState] = useState({ dataCart: [] });
+    let quantity = 1
+    const AddFavourite = (infoProduct)=>{
       const itemfavorite = {
         id: infoProduct.id,
+        quantity: 1,
         image:infoProduct.media.url,
         name:infoProduct.name,
         title:infoProduct.title,
@@ -43,14 +44,37 @@ export default function ProductDetail({ route, navigation }) {
             AsyncStorage.setItem('mycart',JSON.stringify(mycart));
           }
           alert("Add Favorite")
-         
         })
         .catch((err)=>{
           console.log(err)
         })
-    
-  
     }
+    const onChangeQual = (i, type) => {
+        AsyncStorage.removeItem('mycart')
+          .then(() => {
+            const dataCar = state.dataCart
+            let cantd = dataCar[i].quantity;
+    
+            if (type) {
+              cantd = cantd + 1
+              dataCar[i].quantity = cantd
+              setState({ dataCart: dataCar })
+            }
+            else if (type == false && cantd >= 2) {
+              cantd = cantd - 1
+              dataCar[i].quantity = cantd
+              setState({ dataCart: dataCar })
+            }
+            else if (type == false && cantd == 1) {
+              dataCar.splice(i, 1)
+              setState({ dataCart: dataCar })
+            }
+          })
+          .catch((err) => {
+            alert(err)
+          })
+      }
+     
     const ProductInfo = () => {
         setIsLoading(true)
         axios.get(`${BASE_URL}/products/item/${route.params.paramKey}`,
@@ -103,7 +127,7 @@ export default function ProductDetail({ route, navigation }) {
                         }}
                         ref={stepCarousel}
                     >
-                        {imgList.map(e => e.image)}
+                        {imgList.map(e => e.image )}
                     </ScrollView>
                 </View>
                 <View style={{ position: 'absolute', right: 0 }}>
@@ -130,11 +154,21 @@ export default function ProductDetail({ route, navigation }) {
                 </View>
                 <View style={styles.TopBody} >
                     <View style={styles.LeftItem}>
-                        <AntDesign name="minus" size={24} color="black" />
+                        <TouchableOpacity
+                        onPress={()=>
+                            onChangeQual(i,true)
+                        }
+                        >
+                            <AntDesign name="minus" size={24} color="black" />
+                        </TouchableOpacity>
                         <View style={styles.number}>
-                            <Text style={styles.numbers} > 1</Text>
+                            <Text style={styles.numbers} >{quantity}</Text>
                         </View>
-                        <AntDesign name="plus" size={24} color="black" />
+                        <TouchableOpacity  onPress={()=>
+                            onChangeQual(i,false)
+                        }>
+                            <AntDesign name="plus" size={24} color="black" />
+                        </TouchableOpacity>
                     </View>
                     <View>
                         <Text style={styles.Price} >${infoProduct.price}</Text>

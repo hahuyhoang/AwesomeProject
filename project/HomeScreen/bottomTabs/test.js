@@ -7,7 +7,7 @@ import { Value } from 'react-native-reanimated';
 import { AuthContext } from '../../context/AuthContext'
 import axios from 'axios';
 
-const MyCart = ({ navigation }) => {
+const MyCart1 = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(true)
   const [state, setState] = useState({ dataCart: [] });
   const { listproduct, userInfo } = useContext(AuthContext)
@@ -15,18 +15,25 @@ const MyCart = ({ navigation }) => {
   useEffect(() => {
     const wait = navigation.addListener('focus', () => {
       DataCart();
+      // DataFavourite()
     });
     return wait;
   }, [])
- const remove_user =(cart) => {
-  try {
-    AsyncStorage.removeItem('cart');
-    return true;
-}
-catch(exception) {
-    return false;
-}
-   
+ const remove_user = async(item) => {
+    try{
+        let usersJSON= await AsyncStorage.getItem('cart');
+        let usersArray = JSON.parse(usersJSON);
+        let alteredUsers = usersArray.filter(function(e){
+            return e.id !== item.id
+        })
+        AsyncStorage.setItem('cart', JSON.stringify(alteredUsers));
+        setState({
+           users:alteredUsers
+        })
+    }
+    catch(error){
+        console.log(error)
+    }
 };
   const DataCart = () => {
     AsyncStorage.getItem('cart')
@@ -37,49 +44,18 @@ catch(exception) {
           setState({
             dataCart: cartfood
           }) 
-         
+          console.log('====================================');
+          console.log(cartfood);
+          console.log('====================================');
         }
       })
       .catch((err) => {
         alert(err)
       })
       .finally(() => setIsLoading(false))
-
   }
 
-  const onChangeQual = (i, type) => {
-    AsyncStorage.getItem('cart')
-      .then(() => {
-        const dataCar = state.dataCart
-        let cantd = dataCar[i].quantity;
 
-        if (type) {
-          cantd = cantd + 1
-          dataCar[i].quantity = cantd
-          setState({ dataCart: dataCar })
-        }
-        else if (type == false && cantd >= 2) {
-          cantd = cantd - 1
-          dataCar[i].quantity = cantd
-          setState({ dataCart: dataCar })
-        }
-        else if (type == false && cantd == 1) {
-          dataCar.splice(i, 1)
-          setState({ dataCart: dataCar})
-        }
-      })
-      .catch((err) => {
-        alert(err)
-      })
-  }
-  const onloadTotal = () => {
-    var total = 0
-    const cart = state.dataCart
-    for (var i = 0; i < cart.length; i++) {
-      total = total + (cart[i].price * cart[i].quantity)
-    }
-    return total.toFixed(2)
-  }
   return (
     <View style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
@@ -103,7 +79,6 @@ catch(exception) {
                     <Text style={styles.ProductText}>{item.title}</Text>
                     <View style={styles.Productnumber}>
                       <TouchableOpacity style={styles.productAdd}
-                        onPress={() => onChangeQual(i, false)}
                       >
                         <AntDesign name="minus" size={24} color="black" />
                       </TouchableOpacity>
@@ -111,7 +86,6 @@ catch(exception) {
                         <Text style={{ fontWeight: 'bold' }} >{item.quantity}</Text>
                       </View>
                       <TouchableOpacity style={styles.productAdd}
-                        onPress={() => onChangeQual(i, true)}
                       >
                         <AntDesign name="plus" size={24} color="black" />
                       </TouchableOpacity>
@@ -137,12 +111,9 @@ catch(exception) {
           
         </View>
         <View style={styles.botton}>
-          <TouchableOpacity style={styles.CkeckCart} onPress={() => { navigation.navigate("Add",{
-            key: onloadTotal(),
-          }) }} >
+          <TouchableOpacity style={styles.CkeckCart} onPress={() => { navigation.navigate("Add") }} >
             <Text style={styles.TexBtn}>Go to Checkout</Text>
             <View style={styles.bottonPrice}>
-              <Text style={{ color: '#fff', }}>${onloadTotal()}</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -154,4 +125,4 @@ catch(exception) {
 }
 
 
-export default MyCart;
+export default MyCart1;
